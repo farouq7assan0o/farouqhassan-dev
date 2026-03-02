@@ -3,6 +3,16 @@ export const runtime = 'nodejs';
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
+
+  // DEBUG - remove after testing
+  if (searchParams.get("debug") === "1") {
+    return new Response(JSON.stringify({
+      hasClientId: !!process.env.GITHUB_CLIENT_ID,
+      clientIdValue: process.env.GITHUB_CLIENT_ID?.slice(0, 5) + "...",
+      hasSecret: !!process.env.GITHUB_CLIENT_SECRET,
+    }), { headers: { "Content-Type": "application/json" } });
+  }
+  
   const provider = searchParams.get("provider") || "github";
 
   // Step 1: No code yet — redirect to GitHub to get one
