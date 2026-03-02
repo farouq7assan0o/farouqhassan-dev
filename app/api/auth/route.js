@@ -12,7 +12,7 @@ export async function GET(request) {
       hasSecret: !!process.env.GITHUB_CLIENT_SECRET,
     }), { headers: { "Content-Type": "application/json" } });
   }
-  
+
   const provider = searchParams.get("provider") || "github";
 
   // Step 1: No code yet — redirect to GitHub to get one
@@ -56,8 +56,7 @@ export async function GET(request) {
   const token = ${JSON.stringify(token)};
   const message = "authorization:github:success:" + JSON.stringify({ token, provider: "github" });
   if (window.opener) {
-    window.opener.postMessage(message, "*");
-    setTimeout(() => window.close(), 200);
+    window.opener.postMessage(message, window.location.origin);    setTimeout(() => window.close(), 200);
   } else {
     localStorage.setItem("netlify-cms-user", JSON.stringify({ token, provider: "github" }));
     window.location.href = "/admin/index.html";
