@@ -2,7 +2,8 @@ backend:
   name: github
   repo: farouq7assan0o/farouqhassan-dev
   branch: main
-  site_domain: lighthearted-swan-f28f88.netlify.app
+  base_url: https://farouqhassan.dev
+  auth_endpoint: api/auth/callback
 
 media_folder: "public/images"
 public_folder: "/images"
