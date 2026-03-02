@@ -1,0 +1,124 @@
+backend:
+  name: github
+  repo: farouq7assan0o/farouqhassan-dev
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+
+  # ── WRITEUPS ──────────────────────────────────────────────
+  - name: "writeups"
+    label: "Writeups & Articles"
+    folder: "content/writeups"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "string", hint: "e.g. Mar 2026" }
+      - { label: "Platform", name: "platform", widget: "string", hint: "HTB / Medium / Blog" }
+      - { label: "Collection", name: "collection", widget: "string", hint: "Groups writeups on the page — e.g. HTB Machines, Detection Engineering Series, Medium Articles" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "URL", name: "url", widget: "string", required: false, hint: "Leave blank if not published yet" }
+      - { label: "Published", name: "published", widget: "boolean", default: false }
+      - { label: "Body (optional full writeup)", name: "body", widget: "markdown", required: false }
+
+  # ── PROJECTS ──────────────────────────────────────────────
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Year", name: "year", widget: "string", hint: "e.g. 2025" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "▲ Pentest / Red", value: "pentest" }
+          - { label: "▼ SOC / DFIR", value: "soc" }
+          - { label: "☁ Cloud / Infra", value: "cloud" }
+          - { label: "⚖ Compliance / Risk", value: "compliance" }
+          - { label: "◆ Other", value: "other" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Summary", name: "summary", widget: "text", hint: "2-3 sentences shown on the card" }
+      - { label: "Key Findings", name: "highlights", widget: "list", hint: "Bullet points shown in Details" }
+      - { label: "GitHub URL", name: "githubUrl", widget: "string", required: false }
+      - { label: "Project / Report URL", name: "projectUrl", widget: "string", required: false, hint: "PDF, demo, report, slides — anything" }
+
+  # ── CERTIFICATIONS ────────────────────────────────────────
+  - name: "certs"
+    label: "Certifications"
+    folder: "content/certs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Short Name", name: "name", widget: "string", hint: "e.g. CPTS" }
+      - { label: "Full Name", name: "full", widget: "string", hint: "e.g. Certified Penetration Testing Specialist" }
+      - { label: "Issuer", name: "issuer", widget: "string", hint: "e.g. Hack The Box" }
+      - { label: "Year", name: "year", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "✓ Earned", value: "earned" }
+          - { label: "In Progress", value: "in-progress" }
+          - { label: "Planned", value: "planned" }
+      - { label: "Progress %", name: "pct", widget: "number", default: 0, hint: "0 if not started, 100 if earned" }
+      - { label: "Badge / Verify URL", name: "badgeUrl", widget: "string", required: false, hint: "Add when you earn it" }
+      - { label: "Description", name: "description", widget: "text" }
+
+  # ── ROADMAPS ──────────────────────────────────────────────
+  - name: "roadmaps"
+    label: "Roadmaps"
+    folder: "content/roadmaps"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Roadmap Name", name: "name", widget: "string", hint: "e.g. 90-Day Detection Engineering" }
+      - { label: "Description", name: "description", widget: "text" }
+      - label: "Phases"
+        name: "phases"
+        widget: "list"
+        fields:
+          - { label: "Phase label", name: "phase", widget: "string", hint: "e.g. Phase 1" }
+          - { label: "Days", name: "days", widget: "string", hint: "e.g. Days 1-30" }
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Status"
+            name: "status"
+            widget: "select"
+            options:
+              - { label: "▶ Active", value: "active" }
+              - { label: "○ Upcoming", value: "upcoming" }
+              - { label: "✓ Done", value: "done" }
+          - { label: "Goal", name: "goal", widget: "text" }
+          - label: "Weeks"
+            name: "weeks"
+            widget: "list"
+            fields:
+              - { label: "Week label", name: "week", widget: "string", hint: "e.g. Week 1" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Tasks", name: "items", widget: "list" }
+              - { label: "Deliverable", name: "deliverable", widget: "string" }
+              - { label: "Writeup URL", name: "writeupUrl", widget: "string", required: false, hint: "Add when you publish the writeup for this week" }
+
+  # ── PROFILE ───────────────────────────────────────────────
+  - name: "profile"
+    label: "Profile"
+    files:
+      - label: "Profile Info"
+        name: "profile"
+        file: "content/profile.md"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - { label: "GitHub URL", name: "github", widget: "string" }
+          - { label: "Medium URL", name: "medium", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Current Focus", name: "current", widget: "list", hint: "One item per line — shown on homepage" }
