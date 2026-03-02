@@ -16,7 +16,7 @@ const securityHeaders = [
       "img-src 'self' data: https: blob:",
       "connect-src 'self' https://api.github.com https://github.com https://api.netlify.com https://unpkg.com",
       "frame-src https://github.com https://api.netlify.com",
-      "frame-ancestors 'none'",
+      // Removed frame-ancestors 'none' — it blocks the OAuth popup postMessage
     ].join("; "),
   },
 ];
@@ -25,23 +25,21 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Apply security headers to everything EXCEPT /admin
+        // Apply security headers to everything except /admin
         source: "/((?!admin).*)",
         headers: securityHeaders,
       },
     ];
   },
 
-  async rewrites() {
-    return {
-      beforeFiles: [
-        // Serve the static admin HTML directly, bypass Next.js routing
-        {
-          source: "/admin",
-          destination: "/admin/index.html",
-        },
-      ],
-    };
+  async redirects() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+        permanent: false,
+      },
+    ];
   },
 
   reactStrictMode: true,
