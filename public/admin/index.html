@@ -3,9 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
+    <title>Content Manager — farouqhassan.dev</title>
+    <!-- React must load before Decap CMS -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   </head>
   <body>
+    <!-- Use a specific stable version, not ^3.0.0 which may resolve to a broken build -->
     <script src="https://unpkg.com/decap-cms-app@3.1.10/dist/decap-cms-app.js"></script>
+    <script>
+      DecapCmsApp.init();
+    </script>
   </body>
 </html>
