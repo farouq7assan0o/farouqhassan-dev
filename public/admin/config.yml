@@ -2,10 +2,8 @@ backend:
   name: github
   repo: farouq7assan0o/farouqhassan-dev
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  site_domain: lighthearted-swan-f28f88.netlify.app
-  auth_type: pkce
+  auth_type: implicit
+  app_id: Ov23liThD61yrjqlTnDX
 
 media_folder: "public/images"
 public_folder: "/images"
