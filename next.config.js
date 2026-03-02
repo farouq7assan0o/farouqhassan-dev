@@ -1,26 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 const securityHeaders = [
-  {
-    key: "X-Frame-Options",
-    value: "DENY",
-  },
-  {
-    key: "X-Content-Type-Options",
-    value: "nosniff",
-  },
-  {
-    key: "Referrer-Policy",
-    value: "strict-origin-when-cross-origin",
-  },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
-  },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=31536000; includeSubDomains",
-  },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
   {
     key: "Content-Security-Policy",
     value: [
@@ -40,11 +25,25 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        // Apply security headers to everything EXCEPT /admin
+        source: "/((?!admin).*)",
         headers: securityHeaders,
       },
     ];
   },
+
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // Serve the static admin HTML directly, bypass Next.js routing
+        {
+          source: "/admin",
+          destination: "/admin/index.html",
+        },
+      ],
+    };
+  },
+
   reactStrictMode: true,
   compress: true,
 };
