@@ -7,9 +7,6 @@ import { useState, useEffect, useCallback } from "react";
 //   1. Go to https://emn178.github.io/online-tools/sha256.html
 //   2. Type your new password → copy the hash
 //   3. Replace the string below
-// Current password: farouq2026
-const ADMIN_HASH = "fd152270710118a207e130332d5b886aba46388627568ceee2fb38a4c63a6588";
-// ↑ Replace this with your real hash. The one above is a placeholder.
 // ============================================================
 
 // ============================================================
@@ -145,10 +142,6 @@ const PROJECT_CATS = [
 // ============================================================
 // SECURITY — SHA-256 via Web Crypto API (no external lib)
 // ============================================================
-async function sha256(str) {
-  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
-}
 
 // ============================================================
 // SMALL SHARED COMPONENTS
