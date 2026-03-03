@@ -2,7 +2,7 @@ backend:
   name: github
   repo: farouq7assan0o/farouqhassan-dev
   branch: main
-  client_id: Ov23liem2kmOqgf9cFYB
+  auth_type: implicit
 
 media_folder: "public/images"
 public_folder: "/images"
