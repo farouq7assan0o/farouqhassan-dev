@@ -7,31 +7,26 @@ export async function GET(request) {
   if (searchParams.get("debug") === "1") {
     return new Response(JSON.stringify({
       hasClientId: !!process.env.GITHUB_CLIENT_ID,
-      clientIdValue: process.env.GITHUB_CLIENT_ID?.slice(0, 5) + "...",
       hasSecret: !!process.env.GITHUB_CLIENT_SECRET,
     }), { headers: { "Content-Type": "application/json" } });
   }
 
-  // Step 1: No code yet — redirect to GitHub
+  // Step 1: No code — redirect to GitHub
   if (!code) {
     const clientId = process.env.GITHUB_CLIENT_ID || "Ov23liThD61yrjqlTnDX";
     const redirectUri = encodeURIComponent("https://farouqhassan.dev/api/auth");
-    const scope = "repo,user";
-    const githubUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+    const githubUrl = "https://github.com/login/oauth/authorize?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&scope=repo,user";
     return Response.redirect(githubUrl);
   }
 
-  // Step 2: Got code — exchange for token
+  // Step 2: Exchange code for token
   const tokenRes = await fetch("https://github.com/login/oauth/access_token", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({
       client_id: process.env.GITHUB_CLIENT_ID || "Ov23liThD61yrjqlTnDX",
       client_secret: process.env.GITHUB_CLIENT_SECRET || "9e8a6c270a30aa60a565cef418a10585d18a97aa",
-      code,
+      code: code,
       redirect_uri: "https://farouqhassan.dev/api/auth",
     }),
   });
@@ -39,41 +34,29 @@ export async function GET(request) {
   const tokenData = await tokenRes.json();
 
   if (tokenData.error) {
-    return new Response(`Auth error: ${tokenData.error_description}`, { status: 400 });
+    return new Response("Auth error: " + tokenData.error_description, { status: 400 });
   }
 
   const token = tokenData.access_token;
+  const tokenJson = JSON.stringify({ token: token, provider: "github" });
+  const message = "authorization:github:success:" + tokenJson;
 
-  // Step 3: Post token to opener and close
-  const html = `<!DOCTYPE html>
-<html>
-<head><title>Authorizing...</title></head>
-<body>
-<script>
-  const token = ${JSON.stringify(token)};
-<script>
-  const token = ${JSON.stringify(token)};
-  const message = "authorization:github:success:" + JSON.stringify({ token: token, provider: "github" });
-  
-  // Try multiple targets since we don't know the opener origin
-  if (window.opener) {
-    window.opener.postMessage(message, "https://farouqhassan.dev");
-    window.opener.postMessage(message, "*");
-    setTimeout(() => window.close(), 500);
-  } else {
-    window.location.href = "/admin/index.html#token=" + encodeURIComponent(token);
-  }
-</script>  if (window.opener) {
-    window.opener.postMessage(message, "*");
-    setTimeout(() => window.close(), 200);
-  } else {
-    localStorage.setItem("netlify-cms-user", JSON.stringify({ token, provider: "github" }));
-    window.location.href = "/admin/index.html";
-  }
-</script>
-<p>Authorized! This window should close automatically.</p>
-</body>
-</html>`;
+  const html = [
+    "<!DOCTYPE html><html><head><title>Authorizing...</title></head><body>",
+    "<script>",
+    "var token = " + JSON.stringify(token) + ";",
+    "var message = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });",
+    "if (window.opener) {",
+    "  window.opener.postMessage(message, 'https://farouqhassan.dev');",
+    "  window.opener.postMessage(message, '*');",
+    "  setTimeout(function() { window.close(); }, 500);",
+    "} else {",
+    "  window.location.href = '/admin/index.html';",
+    "}",
+    "<\/script>",
+    "<p>Authorized! This window should close automatically.</p>",
+    "</body></html>"
+  ].join("\n");
 
   return new Response(html, {
     headers: { "Content-Type": "text/html" },
