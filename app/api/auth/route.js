@@ -41,24 +41,8 @@ export async function GET(request) {
   const tokenJson = JSON.stringify({ token: token, provider: "github" });
   const message = "authorization:github:success:" + tokenJson;
 
-  const html = [
-    "<!DOCTYPE html><html><head><title>Authorizing...</title></head><body>",
-    "<script>",
-    "var token = " + JSON.stringify(token) + ";",
-    "var message = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });",
-    "if (window.opener) {",
-    "  window.opener.postMessage(message, 'https://farouqhassan.dev');",
-    "  window.opener.postMessage(message, '*');",
-    "  setTimeout(function() { window.close(); }, 500);",
-    "} else {",
-    "  window.location.href = '/admin/index.html';",
-    "}",
-    "<\/script>",
-    "<p>Authorized! This window should close automatically.</p>",
-    "</body></html>"
-  ].join("\n");
-
-  return new Response(html, {
-    headers: { "Content-Type": "text/html" },
-  });
+  // Step 3: Redirect directly to admin with token in hash
+  return Response.redirect(
+    "https://farouqhassan.dev/admin/index.html#access_token=" + token + "&token_type=bearer"
+  );
 }
