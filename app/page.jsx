@@ -21,9 +21,9 @@ const INIT_PROFILE = {
   title: "Cybersecurity Analyst",
   location: "Amman, Jordan",
   email: "12farouq12@gmail.com",
-  linkedin: "https://linkedin.com/in/farouqhassan",
+  linkedin: "https://www.linkedin.com/in/FarouqHassan02",
   github: "https://github.com/farouq7assan0o",
-  medium: "https://medium.com/@farouqnader",
+  medium: "https://medium.com/@12farouq12",
   bio: "Cybersecurity student at HTU, graduating June 2026. Currently 5 months into an 8-month internship at the Special Communications Commission – Jordan Armed Forces, doing real defensive validation and security assurance. Studying the offensive and defensive tracks simultaneously: CWES 70%, CPTS 45%, CDSA already done. I document everything publicly — no recycled theory, just real work.",
   current: [
     "Internship @ SCC-JAF — month 5 of 8",
@@ -36,8 +36,8 @@ const INIT_PROFILE = {
 
 const INIT_CERTS = [
   { id: "cdsa", name: "CDSA", full: "Certified Defensive Security Analyst", issuer: "Hack The Box", year: "2025", status: "earned", pct: 100, badgeUrl: "https://www.credly.com/earner/earned/badge/9385aaf3-d974-43d8-8144-0dca4b70746b", description: "Enterprise SOC investigations, DFIR, SIEM threat hunting, Active Directory attack detection." },
-  { id: "cwse", name: "CWSE", full: "Certified Web Security Expert", issuer: "Hackviser", year: "2025", status: "earned", pct: 100, badgeUrl: "https://hackviser.com/", description: "Web application security testing aligned with OWASP Top 10, bug hunting methodology." },
-  { id: "capt", name: "CAPT", full: "Certified Associate Penetration Tester", issuer: "Hackviser", year: "2025", status: "earned", pct: 100, badgeUrl: "https://hackviser.com/", description: "Penetration testing fundamentals across web, network, and infrastructure environments." },
+  { id: "cwse", name: "CWSE", full: "Certified Web Security Expert", issuer: "Hackviser", year: "2025", status: "earned", pct: 100, badgeUrl: "https://hackviser.com/verify?id=HV-CWSE-D15I7TON", description: "Web application security testing aligned with OWASP Top 10, bug hunting methodology." },
+  { id: "capt", name: "CAPT", full: "Certified Associate Penetration Tester", issuer: "Hackviser", year: "2025", status: "earned", pct: 100, badgeUrl: "https://hackviser.com/verify?id=HV-CAPT-T3O8P3JO", description: "Penetration testing fundamentals across web, network, and infrastructure environments." },
   { id: "nca", name: "NCA", full: "Nutanix Certified Associate v6", issuer: "Nutanix", year: "2025", status: "earned", pct: 100, badgeUrl: "https://www.credly.com/earner/earned/badge/9c45a9a4-34b0-46b8-819f-25b6b053dfdd", description: "Hyperconverged infrastructure, cloud architecture, and virtualization fundamentals." },
   { id: "cwes", name: "CWES", full: "Certified Web Exploitation Specialist", issuer: "Hack The Box", year: "2026", status: "in-progress", pct: 70, badgeUrl: null, description: "Advanced web exploitation, chaining vulnerabilities, and real-world offensive attack paths." },
   { id: "cpts", name: "CPTS", full: "Certified Penetration Testing Specialist", issuer: "Hack The Box", year: "2026", status: "in-progress", pct: 45, badgeUrl: null, description: "Full-scope penetration testing, AD attacks, privilege escalation, and professional reporting." },
@@ -46,7 +46,7 @@ const INIT_CERTS = [
 ];
 
 const INIT_WRITEUPS = [
-  { id: 1, title: "HTB CDSA — What It Really Takes to Pass", date: "Feb 2026", platform: "Medium", collection: "Journey", tags: ["CDSA", "Blue Team", "Journey"], excerpt: "An honest account of what the CDSA exam demands — the lab hours, the mental pressure, and what actually prepared me to pass. No fluff.", url: "https://medium.com/@farouqnader", published: true },
+  { id: 1, title: "HTB CDSA — What It Really Takes to Pass", date: "Feb 2026", platform: "Medium", collection: "Journey", tags: ["CDSA", "Blue Team", "Journey"], excerpt: "An honest account of what the CDSA exam demands — the lab hours, the mental pressure, and what actually prepared me to pass. No fluff.", url: "https://medium.com/@12farouq12/htb-cdsa-2025-what-it-really-takes-to-pass-the-certified-defensive-security-analyst-exam-5215213392cc", published: true },
   { id: 2, title: "HTB Machine Writeup #1 — Coming Soon", date: "Mar 2026", platform: "HTB", collection: "HTB Machines", tags: ["HTB", "Linux", "Privilege Escalation"], excerpt: "First HTB machine writeup. Full walkthrough from recon to root.", url: null, published: false },
   { id: 3, title: "Detection Engineering: Writing Real Sigma Rules", date: "Coming", platform: "Blog", collection: "Detection Engineering Series", tags: ["Detection Engineering", "Sigma", "Blue Team"], excerpt: "Phase 1 deliverable — building real detections for AD attack paths with MITRE mapping and false positive tuning.", url: null, published: false },
 ];
@@ -510,7 +510,7 @@ function AdminProfile({ profile, dispatch, showToast }) {
         <Field label="Medium URL" value={form.medium} onChange={f("medium")} />
       </div>
       <div style={{ marginBottom: "10px" }}><Field label="Bio" value={form.bio} onChange={f("bio")} rows={3} /></div>
-      <div style={{ marginBottom: "14px" }}><Field label="Current Focus (one item per line)" value={form.current} onChange={f("current")} rows={6} placeholder={"Internship @ SCC-JAF — month 8\nHTB CWES — 70%"} /></div>
+      <div style={{ marginBottom: "14px" }}><Field label="Current Focus (one item per line)" value={form.current} onChange={f("current")} rows={6} placeholder={"Internship @ SCC-JAF — month 5\nHTB CWES — 70%"} /></div>
       <Btn onClick={save}>→ save profile</Btn>
     </div>
   );
