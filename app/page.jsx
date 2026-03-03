@@ -24,9 +24,9 @@ const INIT_PROFILE = {
   linkedin: "https://linkedin.com/in/farouqhassan",
   github: "https://github.com/farouq7assan0o",
   medium: "https://medium.com/@farouqnader",
-  bio: "Cybersecurity student at HTU, graduating June 2026. Currently 8 months into an 11-month internship at the Special Communications Commission – Jordan Armed Forces, doing real defensive validation and security assurance. Studying the offensive and defensive tracks simultaneously: CWES 70%, CPTS 45%, CDSA already done. I document everything publicly — no recycled theory, just real work.",
+  bio: "Cybersecurity student at HTU, graduating June 2026. Currently 5 months into an 8-month internship at the Special Communications Commission – Jordan Armed Forces, doing real defensive validation and security assurance. Studying the offensive and defensive tracks simultaneously: CWES 70%, CPTS 45%, CDSA already done. I document everything publicly — no recycled theory, just real work.",
   current: [
-    "Internship @ SCC-JAF — month 8 of 11",
+    "Internship @ SCC-JAF — month 5 of 8",
     "HTB CWES — 70% complete",
     "HTB CPTS — 45% complete",
     "90-Day Detection Engineering roadmap (active)",
@@ -35,10 +35,10 @@ const INIT_PROFILE = {
 };
 
 const INIT_CERTS = [
-  { id: "cdsa", name: "CDSA", full: "Certified Defensive Security Analyst", issuer: "Hack The Box", year: "2025", status: "earned", pct: 100, badgeUrl: "https://www.hackthebox.com/", description: "Enterprise SOC investigations, DFIR, SIEM threat hunting, Active Directory attack detection." },
+  { id: "cdsa", name: "CDSA", full: "Certified Defensive Security Analyst", issuer: "Hack The Box", year: "2025", status: "earned", pct: 100, badgeUrl: "https://www.credly.com/earner/earned/badge/9385aaf3-d974-43d8-8144-0dca4b70746b", description: "Enterprise SOC investigations, DFIR, SIEM threat hunting, Active Directory attack detection." },
   { id: "cwse", name: "CWSE", full: "Certified Web Security Expert", issuer: "Hackviser", year: "2025", status: "earned", pct: 100, badgeUrl: "https://hackviser.com/", description: "Web application security testing aligned with OWASP Top 10, bug hunting methodology." },
   { id: "capt", name: "CAPT", full: "Certified Associate Penetration Tester", issuer: "Hackviser", year: "2025", status: "earned", pct: 100, badgeUrl: "https://hackviser.com/", description: "Penetration testing fundamentals across web, network, and infrastructure environments." },
-  { id: "nca", name: "NCA", full: "Nutanix Certified Associate v6", issuer: "Nutanix", year: "2025", status: "earned", pct: 100, badgeUrl: "https://www.nutanix.com/", description: "Hyperconverged infrastructure, cloud architecture, and virtualization fundamentals." },
+  { id: "nca", name: "NCA", full: "Nutanix Certified Associate v6", issuer: "Nutanix", year: "2025", status: "earned", pct: 100, badgeUrl: "https://www.credly.com/earner/earned/badge/9c45a9a4-34b0-46b8-819f-25b6b053dfdd", description: "Hyperconverged infrastructure, cloud architecture, and virtualization fundamentals." },
   { id: "cwes", name: "CWES", full: "Certified Web Exploitation Specialist", issuer: "Hack The Box", year: "2026", status: "in-progress", pct: 70, badgeUrl: null, description: "Advanced web exploitation, chaining vulnerabilities, and real-world offensive attack paths." },
   { id: "cpts", name: "CPTS", full: "Certified Penetration Testing Specialist", issuer: "Hack The Box", year: "2026", status: "in-progress", pct: 45, badgeUrl: null, description: "Full-scope penetration testing, AD attacks, privilege escalation, and professional reporting." },
   { id: "secplus", name: "Sec+", full: "CompTIA Security+ SY0-701", issuer: "CompTIA", year: "2026", status: "planned", pct: 0, badgeUrl: null, description: "Industry-standard baseline for security concepts, threats, and risk management." },
