@@ -1,9 +1,9 @@
 backend:
   name: github
-  auth_type: implicit
-  app_id: Ov23liThD61yrjqlTnDX
   repo: farouq7assan0o/farouqhassan-dev
   branch: main
+  base_url: https://farouqhassan.dev
+  auth_endpoint: api/auth
 
 media_folder: "public/images"
 public_folder: "/images"
