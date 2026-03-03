@@ -10,24 +10,31 @@
   <body>
     <script src="https://unpkg.com/decap-cms-app@3.1.10/dist/decap-cms-app.js"></script>
     <script>
-      // Check if token is in URL hash (from our OAuth redirect)
+      // If token is in hash, store it and clean URL
       var hash = window.location.hash.substring(1);
       var params = {};
       hash.split('&').forEach(function(part) {
         var item = part.split('=');
-        params[decodeURIComponent(item[0])] = decodeURIComponent(item[1] || '');
+        if (item[0]) params[decodeURIComponent(item[0])] = decodeURIComponent(item[1] || '');
       });
 
       if (params.access_token) {
-        // Store token so Decap finds it, then clean URL
-        localStorage.setItem('decap-cms-token', params.access_token);
         localStorage.setItem('decap-cms-user', JSON.stringify({
           token: params.access_token,
           provider: 'github'
         }));
-        // Clean the hash from URL without reloading
         history.replaceState(null, '', window.location.pathname);
       }
+
+      // Override window.open to redirect in same tab instead of popup
+      var originalOpen = window.open;
+      window.open = function(url, name, features) {
+        if (url && url.indexOf('api/auth') !== -1) {
+          window.location.href = url;
+          return window;
+        }
+        return originalOpen.call(window, url, name, features);
+      };
 
       DecapCmsApp.init();
     </script>
