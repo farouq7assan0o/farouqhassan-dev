@@ -4,7 +4,6 @@ export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
 
-  // DEBUG - remove after testing
   if (searchParams.get("debug") === "1") {
     return new Response(JSON.stringify({
       hasClientId: !!process.env.GITHUB_CLIENT_ID,
@@ -13,9 +12,7 @@ export async function GET(request) {
     }), { headers: { "Content-Type": "application/json" } });
   }
 
-  const provider = searchParams.get("provider") || "github";
-
-  // Step 1: No code yet — redirect to GitHub to get one
+  // Step 1: No code yet — redirect to GitHub
   if (!code) {
     const clientId = process.env.GITHUB_CLIENT_ID || "Ov23liThD61yrjqlTnDX";
     const redirectUri = encodeURIComponent("https://farouqhassan.dev/api/auth");
@@ -32,8 +29,8 @@ export async function GET(request) {
       Accept: "application/json",
     },
     body: JSON.stringify({
-      client_id: process.env.GITHUB_CLIENT_ID,
-      client_secret: process.env.GITHUB_CLIENT_SECRET,
+      client_id: process.env.GITHUB_CLIENT_ID || "Ov23liThD61yrjqlTnDX",
+      client_secret: process.env.GITHUB_CLIENT_SECRET || "9e8a6c270a30aa60a565cef418a10585d18a97aa",
       code,
       redirect_uri: "https://farouqhassan.dev/api/auth",
     }),
@@ -47,7 +44,7 @@ export async function GET(request) {
 
   const token = tokenData.access_token;
 
-  // Step 3: Return HTML that posts token to opener and closes
+  // Step 3: Post token to opener and close
   const html = `<!DOCTYPE html>
 <html>
 <head><title>Authorizing...</title></head>
@@ -56,7 +53,8 @@ export async function GET(request) {
   const token = ${JSON.stringify(token)};
   const message = "authorization:github:success:" + JSON.stringify({ token, provider: "github" });
   if (window.opener) {
-    window.opener.postMessage(message, window.location.origin);    setTimeout(() => window.close(), 200);
+    window.opener.postMessage(message, "*");
+    setTimeout(() => window.close(), 200);
   } else {
     localStorage.setItem("netlify-cms-user", JSON.stringify({ token, provider: "github" }));
     window.location.href = "/admin/index.html";
