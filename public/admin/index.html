@@ -10,8 +10,8 @@
   <body>
     <script src="https://unpkg.com/decap-cms-app@3.1.10/dist/decap-cms-app.js"></script>
     <script>
-      // If token is in hash, store it and clean URL
-      var hash = window.location.hash.substring(1);
+      // Strip leading # and any leading slash
+      var hash = window.location.hash.replace(/^#\/?/, '');
       var params = {};
       hash.split('&').forEach(function(part) {
         var item = part.split('=');
@@ -24,9 +24,11 @@
           provider: 'github'
         }));
         history.replaceState(null, '', window.location.pathname);
+        // Reload so Decap picks up the stored token
+        window.location.reload();
       }
 
-      // Override window.open to redirect in same tab instead of popup
+      // Override window.open to redirect in same tab
       var originalOpen = window.open;
       window.open = function(url, name, features) {
         if (url && url.indexOf('api/auth') !== -1) {
