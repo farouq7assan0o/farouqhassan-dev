@@ -37,7 +37,7 @@ export async function GET(request) {
     "var msg = " + JSON.stringify(message) + ";",
     "if (window.opener) {",
     "  window.opener.postMessage(msg, '*');",
-    "  setTimeout(function(){ window.close(); }, 1000);",
+    "  setTimeout(function(){ window.close(); }, 15000);",
     "} else {",
     "  document.body.innerHTML = '<p>Done. Close this tab and refresh admin.</p>';",
     "}",
