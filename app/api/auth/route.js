@@ -51,8 +51,19 @@ export async function GET(request) {
 <body>
 <script>
   const token = ${JSON.stringify(token)};
-  const message = "authorization:github:success:" + JSON.stringify({ token, provider: "github" });
+<script>
+  const token = ${JSON.stringify(token)};
+  const message = "authorization:github:success:" + JSON.stringify({ token: token, provider: "github" });
+  
+  // Try multiple targets since we don't know the opener origin
   if (window.opener) {
+    window.opener.postMessage(message, "https://farouqhassan.dev");
+    window.opener.postMessage(message, "*");
+    setTimeout(() => window.close(), 500);
+  } else {
+    window.location.href = "/admin/index.html#token=" + encodeURIComponent(token);
+  }
+</script>  if (window.opener) {
     window.opener.postMessage(message, "*");
     setTimeout(() => window.close(), 200);
   } else {
