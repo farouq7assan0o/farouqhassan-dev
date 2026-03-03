@@ -4,14 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager — farouqhassan.dev</title>
-    <!-- React must load before Decap CMS -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   </head>
   <body>
-    <!-- Use a specific stable version, not ^3.0.0 which may resolve to a broken build -->
     <script src="https://unpkg.com/decap-cms-app@3.1.10/dist/decap-cms-app.js"></script>
     <script>
+      // Check if token is in URL hash (from our OAuth redirect)
+      var hash = window.location.hash.substring(1);
+      var params = {};
+      hash.split('&').forEach(function(part) {
+        var item = part.split('=');
+        params[decodeURIComponent(item[0])] = decodeURIComponent(item[1] || '');
+      });
+
+      if (params.access_token) {
+        // Store token so Decap finds it, then clean URL
+        localStorage.setItem('decap-cms-token', params.access_token);
+        localStorage.setItem('decap-cms-user', JSON.stringify({
+          token: params.access_token,
+          provider: 'github'
+        }));
+        // Clean the hash from URL without reloading
+        history.replaceState(null, '', window.location.pathname);
+      }
+
       DecapCmsApp.init();
     </script>
   </body>
