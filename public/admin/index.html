@@ -10,39 +10,7 @@
   <body>
     <script src="https://unpkg.com/decap-cms-app@3.1.10/dist/decap-cms-app.js"></script>
     <script>
-      (function() {
-        // Parse token from hash: #access_token= or #/access_token=
-        var hash = window.location.hash.replace(/^#\/?/, '');
-        var params = new URLSearchParams(hash);
-        var token = params.get('access_token');
-
-        // Also check query string
-        if (!token) {
-          token = new URLSearchParams(window.location.search).get('token');
-        }
-
-        if (token) {
-          localStorage.setItem('decap-cms-user', JSON.stringify({
-            token: token,
-            provider: 'github'
-          }));
-          history.replaceState(null, '', window.location.pathname);
-          window.location.reload();
-          return;
-        }
-
-        // Override window.open to redirect in same tab
-        var originalOpen = window.open;
-        window.open = function(url, name, features) {
-          if (url && url.indexOf('api/auth') !== -1) {
-            window.location.href = url;
-            return window;
-          }
-          return originalOpen.call(window, url, name, features);
-        };
-
-        DecapCmsApp.init();
-      })();
+      DecapCmsApp.init();
     </script>
   </body>
 </html>
