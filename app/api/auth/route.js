@@ -17,7 +17,7 @@ export async function GET(request) {
 
   // Step 1: No code yet — redirect to GitHub to get one
   if (!code) {
-    const clientId = process.env.GITHUB_CLIENT_ID;
+    const clientId = process.env.GITHUB_CLIENT_ID || "Ov23liThD61yrjqlTnDX";
     const redirectUri = encodeURIComponent("https://farouqhassan.dev/api/auth");
     const scope = "repo,user";
     const githubUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
