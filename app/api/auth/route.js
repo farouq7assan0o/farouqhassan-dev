@@ -11,7 +11,6 @@ export async function GET(request) {
     }), { headers: { "Content-Type": "application/json" } });
   }
 
-  // Step 1: No code — redirect to GitHub
   if (!code) {
     const clientId = process.env.GITHUB_CLIENT_ID || "Ov23liThD61yrjqlTnDX";
     const redirectUri = encodeURIComponent("https://farouqhassan.dev/api/auth");
@@ -19,7 +18,6 @@ export async function GET(request) {
     return Response.redirect(githubUrl);
   }
 
-  // Step 2: Exchange code for token
   const tokenRes = await fetch("https://github.com/login/oauth/access_token", {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -38,11 +36,9 @@ export async function GET(request) {
   }
 
   const token = tokenData.access_token;
-  const tokenJson = JSON.stringify({ token: token, provider: "github" });
-  const message = "authorization:github:success:" + tokenJson;
 
-  // Step 3: Redirect directly to admin with token in hash
+  // Redirect to admin with token as query param (avoid Next.js mangling hash)
   return Response.redirect(
-    "https://farouqhassan.dev/admin/index.html#access_token=" + token + "&token_type=bearer"
+    "https://farouqhassan.dev/admin/index.html?token=" + encodeURIComponent(token)
   );
 }

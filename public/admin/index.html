@@ -10,35 +10,31 @@
   <body>
     <script src="https://unpkg.com/decap-cms-app@3.1.10/dist/decap-cms-app.js"></script>
     <script>
-      // Strip leading # and any leading slash
-      var hash = window.location.hash.replace(/^#\/?/, '');
-      var params = {};
-      hash.split('&').forEach(function(part) {
-        var item = part.split('=');
-        if (item[0]) params[decodeURIComponent(item[0])] = decodeURIComponent(item[1] || '');
-      });
+      // Read token from query string
+      var urlParams = new URLSearchParams(window.location.search);
+      var token = urlParams.get('token');
 
-      if (params.access_token) {
+      if (token) {
         localStorage.setItem('decap-cms-user', JSON.stringify({
-          token: params.access_token,
+          token: token,
           provider: 'github'
         }));
+        // Clean URL then reload so Decap picks up stored token
         history.replaceState(null, '', window.location.pathname);
-        // Reload so Decap picks up the stored token
         window.location.reload();
+      } else {
+        // Override window.open to redirect in same tab instead of popup
+        var originalOpen = window.open;
+        window.open = function(url, name, features) {
+          if (url && url.indexOf('api/auth') !== -1) {
+            window.location.href = url;
+            return window;
+          }
+          return originalOpen.call(window, url, name, features);
+        };
+
+        DecapCmsApp.init();
       }
-
-      // Override window.open to redirect in same tab
-      var originalOpen = window.open;
-      window.open = function(url, name, features) {
-        if (url && url.indexOf('api/auth') !== -1) {
-          window.location.href = url;
-          return window;
-        }
-        return originalOpen.call(window, url, name, features);
-      };
-
-      DecapCmsApp.init();
     </script>
   </body>
 </html>
