@@ -4,6 +4,7 @@ backend:
   branch: main
   base_url: https://farouqhassan.dev
   auth_endpoint: api/auth
+  site_domain: farouqhassan.dev
 
 media_folder: "public/images"
 public_folder: "/images"
