@@ -6,11 +6,9 @@ const pages = [
   { name: "Home", path: "/" },
   { name: "Edit", path: "/editorial" },
   { name: "m", path: "/maproom" },
-  { name: "New", path: "/newspaper" },
+  { name: "News", path: "/newspaper" },
   { name: "Scroll", path: "/scroll" },
- // { name: "OS", path: "/os" },
   { name: "IR", path: "/incident" },
-  { name: "m1", path: "/m2" },
   { name: "m2", path: "/m3" },
 ];
 

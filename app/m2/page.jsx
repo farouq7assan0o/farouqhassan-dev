@@ -10,15 +10,15 @@ const ME = {
   linkedin: "https://www.linkedin.com/in/FarouqHassan02",
   github: "https://github.com/farouq7assan0o",
   medium: "https://medium.com/@12farouq12",
-  htb: "https://app.hackthebox.com/users/farouq7assan0o",
+  htb: "https://profile.hackthebox.com/profile/019c57f0-d7e4-7294-9f0a-dd5497fea982",
   cvSoc: "/Farouq_Hassan_Junior_SOC_Analyst_CV.pdf",
   cvOffensive: "/Farouq_Hassan_CV_Offensive.pdf",
   tagline: "I find what's broken\nbefore the adversary does.",
-  bio: "Cybersecurity student at HTU, graduating June 2026. Currently in month 5 of an 8-month internship at SCC–Jordan Armed Forces. I work both offensive and defensive tracks simultaneously — CDSA certified, CWES at 70%, CPTS at 45%. Everything I do is documented publicly.",
+  bio: "Cybersecurity student at HTU, graduating June 2026. Currently in month 5 of an 8-month internship at SCC–Jordan Armed Forces. I work both offensive and defensive tracks simultaneously - CDSA certified, CWES at 70%, CPTS at 45%. Everything I do is documented publicly.",
   testimonial: {
-    quote: "Farouq approaches security with an uncommon mix of technical depth and structured thinking. He doesn't just find the vulnerability — he maps it, documents it, and explains the blast radius. That kind of analyst is rare at any experience level.",
+    quote: "Farouq approaches security with an uncommon mix of technical depth and structured thinking. He doesn't just find the vulnerability - he maps it, documents it, and explains the blast radius. That kind of analyst is rare at any experience level.",
     author: "Supervisor, SCC–Jordan Armed Forces",
-    note: "(placeholder — update with real quote)"
+    note: "(placeholder)"
   },
   current: [
     { l:"SCC-JAF Internship", v:"Month 5 / 8" },
@@ -30,29 +30,29 @@ const ME = {
 };
 
 const PROJECTS = [
-  { id:"animeblast",  sev:9, cat:"PENTEST",  year:2024, title:"AnimeBlast — Full-Scope Pentest",            tags:["Buffer Overflow","Metasploit","SQLi","RCE"],       summary:"Custom Python BoF (EIP@1036), DEP/ASLR/SafeSEH bypass, SOCKS pivot, UNION SQLi, PHP shell→RCE. 10 flags.", highlights:["Custom BoF — EIP @ 1036 bytes","DEP+ASLR+SafeSEH bypass","SOCKS proxy pivot","UNION SQLi → credentials","PHP shell → RCE","10 flags captured"], github:"https://github.com/farouq7assan0o/Penetration-Testing-AnimeBlast-Attack-Simulation" },
-  { id:"malware",     sev:9, cat:"PENTEST",  year:2024, title:"BackdoorBeacon.exe — Malware RE",            tags:["IDA Free","x32dbg","UPX","Reverse Eng."],         summary:"UPX-packed backdoor. TLS callbacks, anti-debug NOP patch, C2 IP patched to 127.0.0.1. SYN beacon confirmed.", highlights:["UPX unpack → PE analysis","Anti-debug NOP patch","C2 → 127.0.0.1","HKCU Run persistence","SSDT/IDT clean"], github:"https://github.com/farouq7assan0o/Secure-Systems-Malware-Analysis-of-BackdoorBeacon.exe" },
-  { id:"irplays",     sev:9, cat:"SOC/DFIR", year:2025, title:"IR Playbooks — 3 Scenarios",                tags:["NIST IR","D3FEND","Ransomware"],                  summary:"Clinic malware, CityWorks ransomware, Bazaarjo supply-chain. ATT&CK→D3FEND. FIDO2 MFA breaks Lumma.", highlights:["Ransomware decision tree","D3FEND: FIDO2 breaks Lumma","Exec update + advisory","Closure criteria defined"], github:"https://github.com/farouq7assan0o/Incident-Response-Planning-ATT-CK-D3FEND-Mapping" },
-  { id:"fair",        sev:9, cat:"GRC",      year:2024, title:"FAIR Risk — $1.38M → $177K",                tags:["FAIR","Monte Carlo","PDPL"],                     summary:"ALE before $1.38M/yr. After MFA+SIEM+training: $177K. PDPL 72hr violation found.", highlights:["ALE before: $1.38M/year","ALE after: $177K (−$1.2M)","PDPL 72hr disclosure violated","Monte Carlo simulation"], github:"https://github.com/farouq7assan0o/Risk-Analysis" },
+  { id:"animeblast",  sev:9, cat:"PENTEST",  year:2024, title:"AnimeBlast - Full-Scope Pentest",            tags:["Buffer Overflow","Metasploit","SQLi","RCE"],       summary:"Custom Python BoF (EIP@1036), DEP/ASLR/SafeSEH bypass, SOCKS pivot, UNION SQLi, PHP shell→RCE. 10 flags.", highlights:["Custom BoF - EIP @ 1036 bytes","DEP+ASLR+SafeSEH bypass","SOCKS proxy pivot","UNION SQLi → credentials","PHP shell → RCE","10 flags captured"], github:"https://github.com/farouq7assan0o/Penetration-Testing-AnimeBlast-Attack-Simulation" },
+  { id:"malware",     sev:9, cat:"PENTEST",  year:2024, title:"BackdoorBeacon.exe - Malware RE",            tags:["IDA Free","x32dbg","UPX","Reverse Eng."],         summary:"UPX-packed backdoor. TLS callbacks, anti-debug NOP patch, C2 IP patched to 127.0.0.1. SYN beacon confirmed.", highlights:["UPX unpack → PE analysis","Anti-debug NOP patch","C2 → 127.0.0.1","HKCU Run persistence","SSDT/IDT clean"], github:"https://github.com/farouq7assan0o/Secure-Systems-Malware-Analysis-of-BackdoorBeacon.exe" },
+  { id:"irplays",     sev:9, cat:"SOC/DFIR", year:2025, title:"IR Playbooks - 3 Scenarios",                tags:["NIST IR","D3FEND","Ransomware"],                  summary:"Clinic malware, CityWorks ransomware, Bazaarjo supply-chain. ATT&CK→D3FEND. FIDO2 MFA breaks Lumma.", highlights:["Ransomware decision tree","D3FEND: FIDO2 breaks Lumma","Exec update + advisory","Closure criteria defined"], github:"https://github.com/farouq7assan0o/Incident-Response-Planning-ATT-CK-D3FEND-Mapping" },
+  { id:"fair",        sev:9, cat:"GRC",      year:2024, title:"FAIR Risk - $1.38M → $177K",                tags:["FAIR","Monte Carlo","PDPL"],                     summary:"ALE before $1.38M/yr. After MFA+SIEM+training: $177K. PDPL 72hr violation found.", highlights:["ALE before: $1.38M/year","ALE after: $177K (−$1.2M)","PDPL 72hr disclosure violated","Monte Carlo simulation"], github:"https://github.com/farouq7assan0o/Risk-Analysis" },
   { id:"pcap",        sev:8, cat:"SOC/DFIR", year:2025, title:"PCAP + Memory Forensics",                   tags:["Wireshark","Volatility 3","DNS Tunneling"],       summary:"HTTP C2 beaconing, DNS TXT Base64 exfil, fileless PowerShell loader via Volatility 3 malfind.", highlights:["HTTP C2 /v1/checkin polling","DNS TXT Base64 exfil","RWX shellcode via malfind","Network+memory correlated"], github:"https://github.com/farouq7assan0o/Network-Memory-Forensics-Investigation" },
-  { id:"aptintel",    sev:8, cat:"SOC/DFIR", year:2025, title:"APT29 + Lumma Stealer Intel",              tags:["MITRE ATT&CK","OSINT","APT29"],                   summary:"ATT&CK Navigator layers for SolarWinds+USAID. Nation-state vs cybercrime.", highlights:["T1195.002 supply chain — High","LSASS+token abuse — High","Lumma T1555 cred harvest","CISA+Mandiant sourced"], github:"https://github.com/farouq7assan0o/Threat-Intelligence-Analysis-MITRE-ATT-CK-Mapping" },
-  { id:"cyberblast",  sev:8, cat:"PENTEST",  year:2024, title:"CyberBlast — Ethical Hacking",              tags:["Nessus","EternalBlue","SQLmap"],                  summary:"Nessus (20 findings), EternalBlue Meterpreter, UNION SQLi, XSS session hijack.", highlights:["Nessus: 20 vulns","EternalBlue → Meterpreter","UNION SQLi + XSS + RCE","MSFvenom payload"], github:"https://github.com/farouq7assan0o/Ethical-Hacking" },
-  { id:"forensics",   sev:8, cat:"SOC/DFIR", year:2024, title:"BlackEagle — Digital Forensics",            tags:["FTK Imager","HxD","Steganography"],               summary:"NTFS manual recovery, DOCX inside PNG stego, hidden message decoded. Chain of custody.", highlights:["NTFS mirror manual recovery","DOCX inside PNG stego","Hidden message decoded","Hash verified throughout"], github:"https://github.com/farouq7assan0o/Digital-Forensics-Investigation" },
+  { id:"aptintel",    sev:8, cat:"SOC/DFIR", year:2025, title:"APT29 + Lumma Stealer Intel",              tags:["MITRE ATT&CK","OSINT","APT29"],                   summary:"ATT&CK Navigator layers for SolarWinds+USAID. Nation-state vs cybercrime.", highlights:["T1195.002 supply chain - High","LSASS+token abuse - High","Lumma T1555 cred harvest","CISA+Mandiant sourced"], github:"https://github.com/farouq7assan0o/Threat-Intelligence-Analysis-MITRE-ATT-CK-Mapping" },
+  { id:"cyberblast",  sev:8, cat:"PENTEST",  year:2024, title:"CyberBlast - Ethical Hacking",              tags:["Nessus","EternalBlue","SQLmap"],                  summary:"Nessus (20 findings), EternalBlue Meterpreter, UNION SQLi, XSS session hijack.", highlights:["Nessus: 20 vulns","EternalBlue → Meterpreter","UNION SQLi + XSS + RCE","MSFvenom payload"], github:"https://github.com/farouq7assan0o/Ethical-Hacking" },
+  { id:"forensics",   sev:8, cat:"SOC/DFIR", year:2024, title:"BlackEagle - Digital Forensics",            tags:["FTK Imager","HxD","Steganography"],               summary:"NTFS manual recovery, DOCX inside PNG stego, hidden message decoded. Chain of custody.", highlights:["NTFS mirror manual recovery","DOCX inside PNG stego","Hidden message decoded","Hash verified throughout"], github:"https://github.com/farouq7assan0o/Digital-Forensics-Investigation" },
   { id:"otps3",       sev:8, cat:"CLOUD",    year:2025, title:"Secure OTP S3 System",                      tags:["S3","OTP","OWASP A01/A07"],                       summary:"4 critical vulns fixed: OTP in response, no expiry, brute-force, predictable path.", highlights:["OTP removed from API response","5-min expiry+single-use","Rate limit: 5 attempts","uuid4+presigned URL"], github:"https://github.com/farouq7assan0o/Secure-OTP-Based-Historical-Data-Retrieval-System" },
   { id:"sqli",        sev:7, cat:"PENTEST",  year:2025, title:"Banking SQLi + Red Team Plan",              tags:["SQLi","Auth Bypass","Kill Chain"],                summary:"Manual SQLi, full banking ROE, complete Cyber Kill Chain OSINT→C2→exfil.", highlights:["Auth bypass via SQLi","UNION SELECT credentials","Banking ROE documented","Full Kill Chain mapped"], github:"https://github.com/farouq7assan0o/Security-Assessment-Red-Team-Take-Home-Assignment" },
   { id:"governance",  sev:7, cat:"GRC",      year:2025, title:"BazaarJo Governance Gap Assessment",        tags:["ISO 27014","PDPL","PCI DSS"],                    summary:"7 deficiencies: no SoD, no CISO accountability, no breach policy. 12-month roadmap.", highlights:["7 governance gaps","SoD: devs → prod unilateral","No PDPL breach notification","Board brief with roadmap"], github:"https://github.com/farouq7assan0o/Governance-Compliance-Breakdown-Review" },
   { id:"risk",        sev:7, cat:"GRC",      year:2025, title:"Enterprise Risk Management Plan",           tags:["ISO 27005","NIST 800-30","KRIs"],                 summary:"ISO 27005+NIST 800-30. 6 risks rated, If-Then statements, KRIs defined.", highlights:["PII: Critical H×H","If-Then: git → injection","KRIs: MFA%, deploys","Quarterly board reporting"], github:"https://github.com/farouq7assan0o/Enterprise-Risk-Management-Plan-Risk-Assessment" },
   { id:"privesc",     sev:7, cat:"PENTEST",  year:2025, title:"Linux Privilege Escalation",                tags:["LinPEAS","Kernel Exploit","Netcat"],              summary:"Kernel 2.6.32 → Exploit-DB 18411 → LPE compiled and executed on target.", highlights:["Kernel 2.6.32 confirmed","Exploit-DB 18411 LPE","BoF LPE executed","4 transfer methods"], github:"https://github.com/farouq7assan0o/File-Transfer-Techniques-Privilege-Escalation" },
   { id:"bia",         sev:6, cat:"GRC",      year:2025, title:"Business Impact Analysis",                  tags:["BIA","RTO/RPO","PCI DSS"],                       summary:"6 processes. Payment RTO 15min/RPO 0–5min. IR: RTO 15min/RPO 0.", highlights:["Payment RTO 15/RPO 0–5","IR RTO 15/RPO 0","Orders RTO 30/RPO 5","Recovery order defined"], github:"https://github.com/farouq7assan0o/Business-Impact-Analysis-BIA-" },
-  { id:"isms",        sev:6, cat:"GRC",      year:2024, title:"ISMS Design — Bluefrontier Bank",           tags:["ISO 27001","COBIT 2019","BIA"],                  summary:"ISO 27001 full scope. COBIT 7-phase. BIA 6 processes. 3-stage audit. ROI.", highlights:["ISO 27001 full scope","COBIT 2019: 7-phase","BIA: 6 processes","Executive ROI quantified"], github:"https://github.com/farouq7assan0o/Information-Security-Management-System-ISMS-Design-Bluefrontier-Bank" },
-  { id:"semgrep",     sev:5, cat:"PENTEST",  year:2025, title:"Semgrep SAST — 41 Findings",               tags:["Semgrep","SAST","DevSecOps"],                    summary:"41 findings across 1015 files in Juice Shop. Sequelize SQLi detected.", highlights:["41 findings, 1015 files","Sequelize SQLi detected","Push-triggered CI/CD","Parameterized query fix"], github:"https://github.com/farouq7assan0o/Integrating-Semgrep-SAST-into-GitHub-Actions-Juice-Shop-" },
+  { id:"isms",        sev:6, cat:"GRC",      year:2024, title:"ISMS Design - Bluefrontier Bank",           tags:["ISO 27001","COBIT 2019","BIA"],                  summary:"ISO 27001 full scope. COBIT 7-phase. BIA 6 processes. 3-stage audit. ROI.", highlights:["ISO 27001 full scope","COBIT 2019: 7-phase","BIA: 6 processes","Executive ROI quantified"], github:"https://github.com/farouq7assan0o/Information-Security-Management-System-ISMS-Design-Bluefrontier-Bank" },
+  { id:"semgrep",     sev:5, cat:"PENTEST",  year:2025, title:"Semgrep SAST - 41 Findings",               tags:["Semgrep","SAST","DevSecOps"],                    summary:"41 findings across 1015 files in Juice Shop. Sequelize SQLi detected.", highlights:["41 findings, 1015 files","Sequelize SQLi detected","Push-triggered CI/CD","Parameterized query fix"], github:"https://github.com/farouq7assan0o/Integrating-Semgrep-SAST-into-GitHub-Actions-Juice-Shop-" },
   { id:"apache",      sev:5, cat:"CLOUD",    year:2025, title:"Apache + SSH Hardening (CIS)",              tags:["Apache 2.4","CIS Benchmark","SSH"],               summary:"5 Apache misconfigs fixed. SSH: key-only, no root, chacha20+aes256-gcm.", highlights:["5 CIS findings fixed","TraceEnable Off + no indexes","/server-status → 403","Key-only SSH, no root"], github:"https://github.com/farouq7assan0o/Web-Server-SSH-Hardening-CIS-Aligned-" },
   { id:"airline",     sev:5, cat:"SOC/DFIR", year:2024, title:"Secure Airline Check-in System",            tags:["Java","SHA-256","JUnit","RBAC"],                 summary:"SHA-256+salt, 3-strike lockout, RBAC 4 roles, 100k fuzz test, PMD SAST.", highlights:["SHA-256+salt","3-strike lockout","RBAC: 4 roles","100k fuzz test"], github:"https://github.com/farouq7assan0o/SecureCoding" },
   { id:"network",     sev:5, cat:"CLOUD",    year:2023, title:"Enterprise Network Security Design",        tags:["Cisco","IPsec VPN","ASA Firewall"],               summary:"5-site IPsec VPN, ASA DMZ+NAT, full-mesh OSPF, VLAN segmentation.", highlights:["IPsec VPN: AES+SHA","ASA DMZ+NAT","Full-mesh OSPF","VLAN per dept"], github:"https://github.com/farouq7assan0o/Operation-System" },
-  { id:"crypto",      sev:5, cat:"GRC",      year:2024, title:"Applied Cryptography — MITM, ECB, RSA",     tags:["Python","2-DES MITM","RSA"],                    summary:"MITM on 2-DES (2¹¹²→2⁵⁷), ECB pattern leakage, hybrid RSA+DES.", highlights:["MITM: 2¹¹²→2⁵⁷","ECB leakage visualised","RSA+DES hybrid","O(log e) exponentiation"], github:"https://github.com/farouq7assan0o/Crypto-Meet-in-the-Middle-Attack-DES-Modes-Secure-Messaging-Tool" },
+  { id:"crypto",      sev:5, cat:"GRC",      year:2024, title:"Applied Cryptography - MITM, ECB, RSA",     tags:["Python","2-DES MITM","RSA"],                    summary:"MITM on 2-DES (2¹¹²→2⁵⁷), ECB pattern leakage, hybrid RSA+DES.", highlights:["MITM: 2¹¹²→2⁵⁷","ECB leakage visualised","RSA+DES hybrid","O(log e) exponentiation"], github:"https://github.com/farouq7assan0o/Crypto-Meet-in-the-Middle-Attack-DES-Modes-Secure-Messaging-Tool" },
   { id:"ftp",         sev:5, cat:"PENTEST",  year:2025, title:"FTP Brute Force Lab",                       tags:["Hydra","FTP","Brute Force"],                     summary:"Anonymous FTP confirmed, Hydra vs 100k NCSC wordlist, zero lockout.", highlights:["Anonymous FTP confirmed","100k NCSC wordlist","Zero lockout resistance","Fail2Ban+SFTP remediation"], github:"https://github.com/farouq7assan0o/FTP-Enumeration-Brute-Force-Attack" },
-  { id:"hopechain",   sev:3, cat:"OTHER",    year:2024, title:"HopeChain — Blockchain DApp",              tags:["Solidity","Ethereum"],                            summary:"Reentrancy mitigated, zkSNARK proposed, multisig+timelock governance.", highlights:["Reentrancy via transfer()","zkSNARK proposed","Multisig+timelocks","Jordan NGO compliance"], github:"https://github.com/farouq7assan0o/Blockchain-HopeChain-Decentralized-Donation-Platform-on-Ethereum" },
-  { id:"spark",       sev:3, cat:"OTHER",    year:2025, title:"SPARK — Wearable INR Patch",               tags:["IoT","Biomedical","Team Lead"],                  summary:"Led 6-person team. Non-invasive INR monitoring. $1.65M SOM validated.", highlights:["Led 6-person team","$1.65M SOM in $55M market","Continuous INR monitoring","AI alerts"], github:null },
+  { id:"hopechain",   sev:3, cat:"OTHER",    year:2024, title:"HopeChain - Blockchain DApp",              tags:["Solidity","Ethereum"],                            summary:"Reentrancy mitigated, zkSNARK proposed, multisig+timelock governance.", highlights:["Reentrancy via transfer()","zkSNARK proposed","Multisig+timelocks","Jordan NGO compliance"], github:"https://github.com/farouq7assan0o/Blockchain-HopeChain-Decentralized-Donation-Platform-on-Ethereum" },
+  { id:"spark",       sev:3, cat:"OTHER",    year:2025, title:"SPARK - Wearable INR Patch",               tags:["IoT","Biomedical","Team Lead"],                  summary:"Led 6-person team. Non-invasive INR monitoring. $1.65M SOM validated.", highlights:["Led 6-person team","$1.65M SOM in $55M market","Continuous INR monitoring","AI alerts"], github:null },
 ];
 
 const CERTS = [
@@ -122,7 +122,7 @@ const ROADMAP = [
 ];
 
 const WRITEUPS = [
-  { title:"HTB CDSA — What It Really Takes to Pass", date:"Feb 2026", tags:["CDSA","Blue Team"], excerpt:"An honest account of what the CDSA exam demands — lab hours, mental pressure, what worked. No fluff.", url:"https://medium.com/@12farouq12/htb-cdsa-2025-what-it-really-takes-to-pass-the-certified-defensive-security-analyst-exam-5215213392cc", live:true },
+  { title:"HTB CDSA - What It Really Takes to Pass", date:"Feb 2026", tags:["CDSA","Blue Team"], excerpt:"An honest account of what the CDSA exam demands - lab hours, mental pressure, what worked. No fluff.", url:"https://medium.com/@12farouq12/htb-cdsa-2025-what-it-really-takes-to-pass-the-certified-defensive-security-analyst-exam-5215213392cc", live:true },
   { title:"HTB Machine Writeup #1", date:"Mar 2026", tags:["HTB","Linux"], excerpt:"Full walkthrough from recon to root.", url:null, live:false },
   { title:"Detection Engineering: Writing Real Sigma Rules", date:"Coming", tags:["Detection","Sigma"], excerpt:"Production-grade detections for AD attack paths with MITRE mapping and FP tuning.", url:null, live:false },
 ];
@@ -138,7 +138,7 @@ const T = {
   cyanGlow:  "rgba(0,212,255,0.09)",
   cyanDim:   "rgba(0,212,255,0.16)",
 
-  // Signal colours — Map Room
+  // Signal colours - Map Room
   cyan:      "#00D4FF",
   green:     "#00E676",
   amber:     "#FFB020",
@@ -151,8 +151,8 @@ const T = {
   textDim:   "#4A5A70",
 
   // Typography
-  syne:      "'Syne', sans-serif",         // Map Room — hero name + section heads
-  serif:     "'Playfair Display', Georgia, serif", // Editorial — subheads, body titles
+  syne:      "'Syne', sans-serif",         // Map Room - hero name + section heads
+  serif:     "'Playfair Display', Georgia, serif", // Editorial - subheads, body titles
   mono:      "'IBM Plex Mono', monospace",
   sans:      "'DM Sans', Helvetica, sans-serif",
 };
@@ -197,7 +197,7 @@ function Reveal({ children, delay=0 }) {
   return <div ref={r} style={{ opacity:v?1:0, transform:v?"none":"translateY(20px)", transition:`opacity 0.75s ease ${delay}ms, transform 0.75s cubic-bezier(0.16,1,0.3,1) ${delay}ms` }}>{children}</div>;
 }
 
-// ── MAP ROOM PANEL — corner brackets ─────────────────────────
+// ── MAP ROOM PANEL - corner brackets ─────────────────────────
 function Panel({ children, style={}, glow=false }) {
   const bc = glow ? T.cyan : T.border;
   const br = { position:"absolute", width:10, height:10, borderColor:T.cyan, borderStyle:"solid", opacity:glow?0.8:0.45 };
@@ -267,7 +267,7 @@ function CursorTrail({ clearSignal }) {
 function GridBg() {
   return (
     <div style={{ position:"fixed", inset:0, zIndex:0, pointerEvents:"none", overflow:"hidden" }}>
-      {/* Sharp square grid — Map Room */}
+      {/* Sharp square grid - Map Room */}
       <svg width="100%" height="100%" style={{ position:"absolute", inset:0, opacity:0.07 }}>
         <defs>
           <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -295,7 +295,7 @@ function GridBg() {
   );
 }
 
-// ── SECTION HEAD — Syne headline + mono label + orange rule ──
+// ── SECTION HEAD - Syne headline + mono label + orange rule ──
 function SectionHead({ number, label, title }) {
   const [r,v]=useInView();
   return (
@@ -304,7 +304,7 @@ function SectionHead({ number, label, title }) {
         <span style={{ fontFamily:T.mono, fontSize:"0.56rem", color:T.cyan, letterSpacing:"0.28em", opacity:0.7 }}>{String(number).padStart(2,"0")} ──</span>
         <span style={{ fontFamily:T.mono, fontSize:"0.56rem", color:T.textDim, letterSpacing:"0.22em" }}>{label}</span>
       </div>
-      {/* Syne for the big title — Map Room energy */}
+      {/* Syne for the big title - Map Room energy */}
       <h2 style={{ fontFamily:T.syne, fontSize:"clamp(2rem,6vw,4rem)", fontWeight:800, color:T.text, lineHeight:0.92, letterSpacing:"-0.02em" }}>
         {title}
       </h2>
@@ -398,29 +398,29 @@ function HomeView() {
             <Pulse color={T.green} size={5}/>
             <span style={{ color:"rgba(0,230,118,0.75)" }}>SYSTEM ONLINE</span>
           </div>
-          <span style={{ color:T.border }}>—</span>
+          <span style={{ color:T.border }}>-</span>
           <span>{ME.location}</span>
-          <span style={{ color:T.border }}>—</span>
+          <span style={{ color:T.border }}>-</span>
           <span style={{ color:T.cyan }}>{ME.codename}</span>
-          <span style={{ color:T.border }}>—</span>
+          <span style={{ color:T.border }}>-</span>
           <span style={{ color:T.orange }}>AVAILABLE JUNE 2026</span>
         </div>
 
-        {/* Hero name — Syne (Map Room) with editorial outline treatment */}
+        {/* Hero name - Syne (Map Room) with editorial outline treatment */}
         <div style={a(2)}>
           {/* Ghost watermark */}
           <div style={{ position:"absolute", top:"30%", left:"50%", transform:"translate(-50%,-50%)", fontFamily:T.syne, fontSize:"clamp(60px,18vw,200px)", fontWeight:800, color:"rgba(0,212,255,0.02)", lineHeight:1, userSelect:"none", pointerEvents:"none", letterSpacing:"-0.04em" }}>
             FAROUQ
           </div>
           <h1 className="hero-name" style={{ fontFamily:T.syne, fontWeight:800, lineHeight:0.88, letterSpacing:"-0.03em", marginBottom:28, position:"relative" }}>
-            {/* FAROUQ — gradient cyan → white */}
+            {/* FAROUQ - gradient cyan → white */}
             <span style={{ display:"block", background:`linear-gradient(135deg, ${T.cyan} 0%, #FFFFFF 55%, ${T.cyan}80 100%)`, WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text", filter:"drop-shadow(0 0 30px rgba(0,212,255,0.3))" }}>FAROUQ</span>
-            {/* HASSAN — outline only, glowing cyan */}
+            {/* HASSAN - outline only, glowing cyan */}
             <span style={{ display:"block", WebkitTextStroke:`2px ${T.cyan}`, WebkitTextFillColor:"transparent", filter:`drop-shadow(0 0 12px ${T.cyan}60)` }}>HASSAN</span>
           </h1>
         </div>
 
-        {/* Tagline — Playfair italic pull-quote */}
+        {/* Tagline - Playfair italic pull-quote */}
         <div style={{ ...a(3), maxWidth:500, marginBottom:36, borderLeft:`3px solid ${T.orange}`, paddingLeft:18 }}>
           <p style={{ fontFamily:T.serif, fontSize:"clamp(0.95rem,2.2vw,1.25rem)", fontStyle:"italic", color:T.textMid, lineHeight:1.7, whiteSpace:"pre-line" }}>"{ME.tagline}"</p>
         </div>
@@ -435,7 +435,7 @@ function HomeView() {
         {/* CV buttons */}
         <div style={a(4)}>
           <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:16 }}>
-            {[["↓ CV — SOC / Blue Team",ME.cvSoc,"CDSA · Detection · DFIR",true],["↓ CV — Pen Testing",ME.cvOffensive,"CPTS · CWES · Red Team",false]].map(([l,u,sub,p])=>(
+            {[["↓ CV - SOC / Blue Team",ME.cvSoc,"CDSA · Detection · DFIR",true],["↓ CV - Pen Testing",ME.cvOffensive,"CPTS · CWES · Red Team",false]].map(([l,u,sub,p])=>(
               <a key={l} href={u} download
                 style={{ display:"flex", flexDirection:"column", gap:2, padding:"8px 16px", border:`1px solid ${p?T.orange+"90":T.border}`, color:p?T.orange:T.textMid, background:p?`${T.orange}0A`:"transparent", fontFamily:T.mono, textDecoration:"none", transition:"all 0.2s" }}
                 onMouseEnter={e=>{ e.currentTarget.style.background=p?`${T.orange}18`:T.cyanGlow; e.currentTarget.style.color=p?"#FAF8F3":T.text; }}
@@ -458,7 +458,7 @@ function HomeView() {
         </div>
       </div>
 
-      {/* Signal status panel — desktop bottom-right / mobile inline below */}
+      {/* Signal status panel - desktop bottom-right / mobile inline below */}
       <div style={{ position:"absolute", bottom:40, right:"clamp(16px,5vw,60px)", zIndex:2, animation:"fadeIn 0.8s ease 1.4s both" }} className="signal-panel">
         <Panel style={{ padding:"14px 18px", minWidth:210 }} glow>
           <div style={{ fontFamily:T.mono, fontSize:"0.5rem", color:T.cyan, letterSpacing:"0.22em", marginBottom:10, opacity:0.7 }}>ACTIVE OPERATIONS</div>
@@ -474,7 +474,7 @@ function HomeView() {
         </Panel>
       </div>
 
-      {/* Signal panel mobile version — inline, 2-col grid */}
+      {/* Signal panel mobile version - inline, 2-col grid */}
       <div style={{ marginTop:28, position:"relative", zIndex:2 }} className="signal-mob">
         <Panel style={{ padding:"14px 16px" }}>
           <div style={{ fontFamily:T.mono, fontSize:"0.5rem", color:T.cyan, letterSpacing:"0.22em", marginBottom:10, opacity:0.7 }}>ACTIVE OPERATIONS</div>
@@ -504,7 +504,7 @@ function AboutView() {
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:36 }} className="about-grid">
           <Reveal delay={80}>
             <p style={{ fontFamily:T.serif, fontSize:"clamp(0.9rem,2vw,1.05rem)", fontStyle:"italic", color:T.textMid, lineHeight:2, marginBottom:24 }}>"{ME.bio}"</p>
-            {[["EDUCATION","B.Sc. Cybersecurity — HTU · Jun 2026"],["INTERNSHIP","SCC–Jordan Armed Forces · Oct 2025–Jun 2026"],["PLATFORM","HackTheBox — CDSA ✓ · CWES 70% · CPTS 45%"],["COMPETITION","Top 10 / 300+ — NCSCJO National Bootcamp"],["CONTACT",ME.email],["LANGUAGES","Arabic · English · German · Italian (beginner)"]].map(([k,v])=>(
+            {[["EDUCATION","B.Sc. Cybersecurity - HTU · Jun 2026"],["INTERNSHIP","SCC–Jordan Armed Forces · Oct 2025–Jun 2026"],["PLATFORM","HackTheBox - CDSA ✓ · CWES 70% · CPTS 45%"],["COMPETITION","Top 10 / 300+ - NCSCJO National Bootcamp"],["CONTACT",ME.email],["LANGUAGES","Arabic · English · German · Italian (beginner)"]].map(([k,v])=>(
               <div key={k} style={{ display:"flex", gap:14, padding:"9px 0", borderBottom:`1px solid ${T.border}` }}>
                 <div style={{ fontFamily:T.mono, fontSize:"0.54rem", color:T.cyan, minWidth:86, letterSpacing:"0.1em", paddingTop:2, flexShrink:0, opacity:0.8 }}>{k}</div>
                 <div style={{ fontFamily:T.mono, fontSize:"0.7rem", color:T.textMid, lineHeight:1.5 }}>{v}</div>
@@ -518,7 +518,7 @@ function AboutView() {
               ))}
             </div>
             <div style={{ display:"flex", gap:7, flexWrap:"wrap" }}>
-              {[["↓ CV — SOC",ME.cvSoc,true],["↓ CV — Pentest",ME.cvOffensive,true],["→ LinkedIn",ME.linkedin,false],["→ GitHub",ME.github,false],["→ Medium",ME.medium,false]].map(([l,u,dl])=>(
+              {[["↓ CV - SOC",ME.cvSoc,true],["↓ CV - Pentest",ME.cvOffensive,true],["→ LinkedIn",ME.linkedin,false],["→ GitHub",ME.github,false],["→ Medium",ME.medium,false]].map(([l,u,dl])=>(
                 <a key={l} href={u} target={dl?"_self":"_blank"} rel="noreferrer" download={dl||undefined}
                   style={{ padding:"5px 12px", border:`1px solid ${dl?T.orange+"60":T.border}`, color:dl?T.orange:T.textDim, fontFamily:T.mono, fontSize:"0.62rem", textDecoration:"none", letterSpacing:"0.06em", transition:"all 0.18s" }}
                   onMouseEnter={e=>{ e.currentTarget.style.borderColor=dl?T.orange:T.borderHi; e.currentTarget.style.color=dl?"#FAF8F3":T.text; }}
@@ -648,7 +648,7 @@ function RoadmapView() {
         <SectionHead number={3} label="90-DAY ROADMAP" title="Active Investigation" />
         <Reveal>
           <blockquote style={{ fontFamily:T.serif, fontStyle:"italic", fontSize:"clamp(0.9rem,2vw,1.05rem)", color:T.textMid, lineHeight:1.85, maxWidth:580, marginBottom:32, borderLeft:`3px solid ${T.border}`, paddingLeft:18 }}>
-            "90-Day Detection Engineering — build 15–20 production-grade rules, a Domain Compromise Detection Framework, and a public GitHub portfolio."
+            "90-Day Detection Engineering - build 15–20 production-grade rules, a Domain Compromise Detection Framework, and a public GitHub portfolio."
           </blockquote>
         </Reveal>
         {ROADMAP.map((ph,pi)=>(
@@ -659,7 +659,7 @@ function RoadmapView() {
                 <div style={{ display:"flex", gap:12, alignItems:"center", flexWrap:"wrap" }}>
                   {ph.status==="active"&&<Pulse color={T.green} size={6}/>}
                   <span style={{ fontFamily:T.mono, fontSize:"0.54rem", color:T.textDim, letterSpacing:"0.1em" }}>{ph.phase} · {ph.days}</span>
-                  {/* Syne for phase title — Map Room energy */}
+                  {/* Syne for phase title - Map Room energy */}
                   <span style={{ fontFamily:T.syne, fontSize:"0.95rem", fontWeight:700, color:ph.status==="active"?T.text:T.textMid }}>{ph.title}</span>
                 </div>
                 <span style={{ fontFamily:T.mono, fontSize:"0.58rem", color:T.textDim, flexShrink:0 }}>{openPh===ph.phase?"▲":"▼"}</span>
@@ -758,7 +758,7 @@ function CertsView() {
                     style={{ padding:"12px 16px", display:"flex", gap:14, alignItems:"center", cursor:c.url?"pointer":"default", transition:"background 0.18s" }}
                     onMouseEnter={e=>{ if(c.url) e.currentTarget.style.background=T.panelHi; }}
                     onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-                    {/* Syne cert abbreviation — bold, clear, Map Room */}
+                    {/* Syne cert abbreviation - bold, clear, Map Room */}
                     <div style={{ fontFamily:T.syne, fontSize:"0.82rem", fontWeight:800, color:STATUS_COL[g], minWidth:46, flexShrink:0 }}>{c.name}</div>
                     <div style={{ flex:1, minWidth:0 }}>
                       <div style={{ fontFamily:T.sans, fontSize:"0.74rem", color:T.text, marginBottom:2 }}>{c.full}</div>
@@ -807,7 +807,7 @@ function WriteupsView() {
                   </div>
                   <span style={{ fontFamily:T.mono, fontSize:"0.54rem", color:T.textDim }}>{w.date}</span>
                 </div>
-                {/* Serif writeup title — editorial */}
+                {/* Serif writeup title - editorial */}
                 <h3 style={{ fontFamily:T.serif, fontSize:"clamp(0.98rem,2.5vw,1.45rem)", fontWeight:700, color:T.text, marginBottom:7, lineHeight:1.25, letterSpacing:"-0.01em" }}>{w.title}</h3>
                 <p style={{ fontFamily:T.sans, fontSize:"0.78rem", color:T.textMid, lineHeight:1.8 }}>{w.excerpt}</p>
                 {w.live&&<div style={{ marginTop:11, fontFamily:T.mono, fontSize:"0.6rem", color:T.orange }}>READ ON MEDIUM ↗</div>}
@@ -817,7 +817,7 @@ function WriteupsView() {
         ))}
         <Reveal delay={280}>
           <div style={{ marginTop:18, padding:"10px 0", fontFamily:T.mono, fontSize:"0.56rem", color:T.textDim, letterSpacing:"0.12em", borderTop:`1px solid ${T.border}` }}>
-            MORE REPORTS IN QUEUE — PUBLISHING REGULARLY ON MEDIUM
+            MORE REPORTS IN QUEUE - PUBLISHING REGULARLY ON MEDIUM
           </div>
         </Reveal>
       </div>
@@ -834,10 +834,10 @@ function ContactView() {
       <div style={{ maxWidth:780, margin:"0 auto", width:"100%", position:"relative", zIndex:2 }}>
         <SectionHead number={7} label="ESTABLISH CONTACT" title="Reach Out" />
 
-        {/* Plain-English context — HR friendly */}
+        {/* Plain-English context - HR friendly */}
         <Reveal delay={60}>
           <p style={{ fontFamily:T.sans, fontSize:"clamp(0.9rem,2vw,1.05rem)", color:T.textMid, lineHeight:1.9, marginBottom:36, borderLeft:`3px solid ${T.orange}`, paddingLeft:18 }}>
-            I'm graduating in June 2026 and open to SOC analyst, detection engineering, and junior red team roles. I'm based in Amman but open to remote. If you're hiring, collaborating, or just want to talk security — I'd like to hear from you.
+            I'm graduating in June 2026 and open to SOC analyst, detection engineering, and junior red team roles. I'm based in Amman but open to remote. If you're hiring, collaborating, or just want to talk security - I'd like to hear from you.
           </p>
         </Reveal>
 
@@ -874,7 +874,7 @@ function ContactView() {
                 "{ME.testimonial.quote}"
               </p>
               <div style={{ fontFamily:T.mono, fontSize:"0.58rem", color:T.textDim }}>
-                — {ME.testimonial.author}
+                - {ME.testimonial.author}
                 <span style={{ color:T.orange, marginLeft:8, fontSize:"0.5rem" }}>{ME.testimonial.note}</span>
               </div>
             </div>
@@ -910,7 +910,7 @@ export default function App() {
     window.history.replaceState(null,"",`#${active}`);
   },[active]);
 
-  // Font loading state — removes flash of unstyled text
+  // Font loading state - removes flash of unstyled text
   useEffect(()=>{
     if(document.fonts){
       document.fonts.ready.then(()=>setFontsLoaded(true));
@@ -950,7 +950,7 @@ export default function App() {
         @keyframes nameGlow { 0%,100%{text-shadow:0 0 40px rgba(0,212,255,0.12)} 50%{text-shadow:0 0 80px rgba(0,212,255,0.28), 0 0 120px rgba(0,212,255,0.1)} }
         .hero-name { animation: nameGlow 4s ease infinite; font-size: clamp(3.5rem, 11vw, 9.5rem); }
 
-        /* CSS classes control layout — no conflicting inline display values */
+        /* CSS classes control layout - no conflicting inline display values */
         .desk-nav     { display:flex; }
         .mob-btn      { display:none; }
         .about-grid   { grid-template-columns:1fr 1fr; }
