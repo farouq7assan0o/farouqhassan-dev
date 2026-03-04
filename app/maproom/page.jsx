@@ -398,7 +398,7 @@ function HomeSection({ setActive }) {
             </div>
           </div>
 
-          {/* Signal panel */}
+          {/* Signal panel — desktop only (hidden on mobile, shown below instead) */}
           <div style={{ ...show(3), minWidth: "220px" }} className="signal-panel">
             <Panel style={{ padding: "20px" }}>
               <Label>Signal Status</Label>
@@ -416,8 +416,25 @@ function HomeSection({ setActive }) {
           </div>
         </div>
 
+        {/* Signal panel — mobile only, shown inline after hero */}
+        <div style={{ ...show(3), marginTop: "28px" }} className="signal-panel-mob">
+          <Panel style={{ padding: "16px 18px" }}>
+            <Label>Signal Status</Label>
+            <div style={{ marginTop: "12px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
+              {[["HTU Degree", "Jun 2026", C.amber], ["SCC-JAF", "Month 5/8", C.cyan], ["CDSA", "Earned", C.green], ["CWES", "70%", C.amber], ["CPTS", "45%", C.amber], ["NCSCJO", "Top 10/300+", C.cyan]].map(([k, v, col]) => (
+                <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: "8px", alignItems: "center", padding: "6px 10px", background: C.cyanGlow, border: `1px solid ${C.border}` }}>
+                  <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.textDim }}>{k}</span>
+                  <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: col, display: "flex", alignItems: "center", gap: "4px" }}>
+                    <Pulse color={col} size={4} />{v}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Panel>
+        </div>
+
         {/* Stats row */}
-        <div style={{ marginTop: "64px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: "12px" }}>
+        <div style={{ marginTop: "32px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: "10px" }}>
           {STATS.map((s, i) => <StatBox key={s.label} {...s} delay={i * 100} />)}
         </div>
       </div>
@@ -686,9 +703,9 @@ function WeekRow({ week, col }) {
         <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.textDim }}>{open ? "▲" : "▼"}</span>
       </div>
       {open && (
-        <div style={{ padding: "8px 20px 14px 44px" }}>
+        <div style={{ padding: "8px 16px 14px clamp(20px,6vw,44px)" }}>
           {week.items.map((item, i) => (
-            <div key={i} style={{ fontFamily: C.mono, fontSize: "0.72rem", color: C.textDim, padding: "4px 0", display: "flex", gap: "8px", lineHeight: 1.5 }}>
+            <div key={i} style={{ fontFamily: C.mono, fontSize: "0.7rem", color: C.textDim, padding: "4px 0", display: "flex", gap: "8px", lineHeight: 1.5 }}>
               <span style={{ color: col, flexShrink: 0 }}>→</span>{item}
             </div>
           ))}
@@ -716,10 +733,10 @@ function CertsSection() {
         style={{ padding: "14px 20px", borderBottom: `1px solid ${C.border}`, cursor: cert.badgeUrl ? "pointer" : "default", transition: "background 0.18s", display: "flex", gap: "16px", alignItems: "center" }}
         onMouseEnter={e => { if (cert.badgeUrl) e.currentTarget.style.background = C.cyanGlow; }}
         onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
-        <div style={{ width: "70px", flexShrink: 0, fontFamily: C.head, fontSize: "1rem", fontWeight: 800, color: col }}>{cert.name}</div>
+        <div style={{ width: "56px", flexShrink: 0, fontFamily: C.head, fontSize: "1rem", fontWeight: 800, color: col }}>{cert.name}</div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontFamily: C.mono, fontSize: "0.72rem", color: C.text, marginBottom: "2px" }}>{cert.full}</div>
-          <div style={{ fontFamily: C.mono, fontSize: "0.62rem", color: C.textDim }}>{cert.issuer} · {cert.year} · {cert.desc}</div>
+          <div style={{ fontFamily: C.mono, fontSize: "0.72rem", color: C.text, marginBottom: "2px", wordBreak: "break-word" }}>{cert.full}</div>
+          <div style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.textDim, lineHeight: 1.5, wordBreak: "break-word" }}>{cert.issuer} · {cert.year} · {cert.desc}</div>
           {cert.status === "active" && cert.pct > 0 && (
             <div style={{ marginTop: "8px", display: "flex", gap: "10px", alignItems: "center" }}>
               <div style={{ flex: 1, height: "3px", background: C.border, borderRadius: "2px" }}>
@@ -729,10 +746,10 @@ function CertsSection() {
             </div>
           )}
         </div>
-        <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: "6px" }}>
+        <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: "5px" }}>
           <Pulse color={col} size={6} />
-          <span style={{ fontFamily: C.mono, fontSize: "0.58rem", color: col, letterSpacing: "0.1em" }}>
-            {cert.status === "earned" ? "CLEARED" : cert.status === "active" ? "ACTIVE" : "QUEUED"}
+          <span style={{ fontFamily: C.mono, fontSize: "0.56rem", color: col, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>
+            {cert.status === "earned" ? "✓" : cert.status === "active" ? `${cert.pct}%` : "QUEUED"}
           </span>
           {cert.badgeUrl && <span style={{ fontFamily: C.mono, fontSize: "0.58rem", color: C.cyan }}>↗</span>}
         </div>
@@ -799,12 +816,12 @@ function WriteupsSection() {
                       {post.tags.map(t => <span key={t} style={{ fontSize: "0.58rem", padding: "2px 8px", border: `1px solid ${C.cyan}30`, color: C.cyan, fontFamily: C.mono }}>{t}</span>)}
                       {!post.published && <span style={{ fontSize: "0.58rem", padding: "2px 8px", border: `1px solid ${C.border}`, color: C.textDim, fontFamily: C.mono }}>PENDING</span>}
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" }}>
-                      <div>
-                        <div style={{ fontFamily: C.head, fontSize: "1rem", fontWeight: 700, color: C.text, marginBottom: "4px" }}>{post.title}</div>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontFamily: C.head, fontSize: "1rem", fontWeight: 700, color: C.text, marginBottom: "4px", wordBreak: "break-word" }}>{post.title}</div>
                         <div style={{ fontFamily: C.body, fontSize: "0.8rem", color: C.textMid, lineHeight: 1.7 }}>{post.excerpt}</div>
                       </div>
-                      <div style={{ flexShrink: 0, textAlign: "right" }}>
+                      <div style={{ flexShrink: 0, textAlign: "right", minWidth: "60px" }}>
                         <div style={{ fontFamily: C.mono, fontSize: "0.62rem", color: C.textDim }}>{post.date}</div>
                         <div style={{ fontFamily: C.mono, fontSize: "0.62rem", color: C.textDim }}>{post.platform}</div>
                         {post.published && <div style={{ fontFamily: C.mono, fontSize: "0.7rem", color: C.cyan, marginTop: "6px" }}>↗ READ</div>}
@@ -888,11 +905,14 @@ export default function App() {
         .hero-grid { grid-template-columns: 1fr auto; }
         .about-grid { grid-template-columns: 1fr 1fr; }
         .proj-cols { columns: 320px; }
+        .signal-panel     { display: block !important; }
+        .signal-panel-mob { display: none  !important; }
         @media (max-width: 720px) {
           .desk-nav  { display: none  !important; }
           .mob-btn   { display: block !important; }
           .hero-grid { grid-template-columns: 1fr !important; }
-          .signal-panel { display: none; }
+          .signal-panel     { display: none  !important; }
+          .signal-panel-mob { display: block !important; }
           .about-grid { grid-template-columns: 1fr !important; }
           .proj-cols  { columns: 1 !important; }
         }
