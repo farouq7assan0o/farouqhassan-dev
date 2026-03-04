@@ -9,9 +9,8 @@ const pages = [
   { name: "Newspaper", path: "/newspaper" },
   { name: "Scroll", path: "/scroll" },
   { name: "OS", path: "/os" },
-  { name: "Incident", path: "/incident" },
+  { name: "incident", path: "/incident" },
   { name: "merged", path: "/merged" },
-
 ];
 
 
