@@ -355,7 +355,7 @@ function HomeSection({ setActive }) {
         <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "end" }} className="hero-grid">
           <div>
             {/* Big name */}
-            <div style={{ ...show(2), fontFamily: C.head, fontSize: "clamp(3.5rem,10vw,9rem)", fontWeight: 800, color: C.text, lineHeight: 0.88, letterSpacing: "-0.03em", marginBottom: "32px" }}>
+            <div style={{ ...show(2), fontFamily: C.head, fontWeight: 800, color: C.text, lineHeight: 0.88, letterSpacing: "-0.03em", marginBottom: "32px" }} className="hero-name">
               <span style={{ display: "block" }}>FAROUQ</span>
               <span style={{ display: "block", WebkitTextStroke: `1px ${C.cyan}`, color: "transparent" }}>HASSAN</span>
             </div>
@@ -722,40 +722,8 @@ function WeekRow({ week, col }) {
 // CERTS
 // ─────────────────────────────────────────────────────────────
 function CertsSection() {
-  const earned  = CERTS.filter(c => c.status === "earned");
-  const active  = CERTS.filter(c => c.status === "active");
-  const queued  = CERTS.filter(c => c.status === "queued");
-
-  const CertRow = ({ cert }) => {
-    const col = cert.status === "earned" ? C.green : cert.status === "active" ? C.amber : C.textDim;
-    return (
-      <div onClick={() => cert.badgeUrl && window.open(cert.badgeUrl, "_blank")}
-        style={{ padding: "14px 20px", borderBottom: `1px solid ${C.border}`, cursor: cert.badgeUrl ? "pointer" : "default", transition: "background 0.18s", display: "flex", gap: "16px", alignItems: "center" }}
-        onMouseEnter={e => { if (cert.badgeUrl) e.currentTarget.style.background = C.cyanGlow; }}
-        onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
-        <div style={{ width: "56px", flexShrink: 0, fontFamily: C.head, fontSize: "1rem", fontWeight: 800, color: col }}>{cert.name}</div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontFamily: C.mono, fontSize: "0.72rem", color: C.text, marginBottom: "2px", wordBreak: "break-word" }}>{cert.full}</div>
-          <div style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.textDim, lineHeight: 1.5, wordBreak: "break-word" }}>{cert.issuer} · {cert.year} · {cert.desc}</div>
-          {cert.status === "active" && cert.pct > 0 && (
-            <div style={{ marginTop: "8px", display: "flex", gap: "10px", alignItems: "center" }}>
-              <div style={{ flex: 1, height: "3px", background: C.border, borderRadius: "2px" }}>
-                <div style={{ width: `${cert.pct}%`, height: "100%", background: `linear-gradient(90deg, ${C.amber}, ${C.cyan})`, borderRadius: "2px" }} />
-              </div>
-              <span style={{ fontFamily: C.mono, fontSize: "0.62rem", color: C.amber, flexShrink: 0 }}>{cert.pct}%</span>
-            </div>
-          )}
-        </div>
-        <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: "5px" }}>
-          <Pulse color={col} size={6} />
-          <span style={{ fontFamily: C.mono, fontSize: "0.56rem", color: col, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>
-            {cert.status === "earned" ? "✓" : cert.status === "active" ? `${cert.pct}%` : "QUEUED"}
-          </span>
-          {cert.badgeUrl && <span style={{ fontFamily: C.mono, fontSize: "0.58rem", color: C.cyan }}>↗</span>}
-        </div>
-      </div>
-    );
-  };
+  const STATUS_COL   = { earned: C.green, active: C.amber, queued: C.textDim };
+  const STATUS_LABEL = { earned: "CLEARED", active: "IN PROGRESS", queued: "QUEUED" };
 
   return (
     <div style={{ padding: "100px clamp(16px,4vw,48px) 80px" }}>
@@ -767,16 +735,50 @@ function CertsSection() {
           </h2>
         </Reveal>
 
-        {[{ title: "CLEARED", certs: earned, col: C.green }, { title: "IN PROGRESS", certs: active, col: C.amber }, { title: "QUEUED", certs: queued, col: C.textDim }].map(({ title, certs, col }) => (
-          <Reveal key={title} delay={120}>
-            <Panel style={{ marginBottom: "12px", overflow: "hidden" }}>
-              <div style={{ padding: "10px 20px", borderBottom: `1px solid ${C.border}`, background: C.cyanGlow, display: "flex", alignItems: "center", gap: "10px" }}>
-                <Pulse color={col} size={7} />
-                <span style={{ fontFamily: C.mono, fontSize: "0.65rem", color: col, letterSpacing: "0.15em" }}>{title}</span>
-                <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.textDim, marginLeft: "auto" }}>{certs.length} credential{certs.length !== 1 ? "s" : ""}</span>
+        {["earned", "active", "queued"].map(g => (
+          <Reveal key={g} delay={120}>
+            <div style={{ marginBottom: "28px" }}>
+
+              {/* Group label */}
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+                <Pulse color={STATUS_COL[g]} size={6} />
+                <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: STATUS_COL[g], letterSpacing: "0.18em" }}>{STATUS_LABEL[g]}</span>
               </div>
-              {certs.map(c => <CertRow key={c.id} cert={c} />)}
-            </Panel>
+
+              {/* One panel per cert — exactly like merged */}
+              {CERTS.filter(c => c.status === g).map(c => {
+                const col = STATUS_COL[g];
+                return (
+                  <Panel key={c.id} style={{ marginBottom: "6px", borderLeft: `3px solid ${col}` }}>
+                    <div onClick={() => c.badgeUrl && window.open(c.badgeUrl, "_blank")}
+                      style={{ padding: "13px 16px", display: "flex", gap: "14px", alignItems: "center", cursor: c.badgeUrl ? "pointer" : "default", transition: "background 0.18s" }}
+                      onMouseEnter={e => { if (c.badgeUrl) e.currentTarget.style.background = C.panelHi; }}
+                      onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+                      {/* Cert abbreviation */}
+                      <div style={{ fontFamily: C.head, fontSize: "1.1rem", fontWeight: 800, color: col, minWidth: "52px", flexShrink: 0 }}>{c.name}</div>
+                      {/* Details */}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontFamily: C.mono, fontSize: "0.74rem", color: C.text, marginBottom: "3px" }}>{c.full}</div>
+                        <div style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.textDim, lineHeight: 1.5 }}>{c.issuer} · {c.year} · {c.desc}</div>
+                        {c.status === "active" && (
+                          <div style={{ marginTop: "8px", display: "flex", gap: "10px", alignItems: "center" }}>
+                            <div style={{ flex: 1, height: "3px", background: C.border }}>
+                              <div style={{ width: `${c.pct}%`, height: "100%", background: `linear-gradient(90deg, ${C.amber}, ${C.cyan})` }} />
+                            </div>
+                            <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.amber, flexShrink: 0 }}>{c.pct}%</span>
+                          </div>
+                        )}
+                      </div>
+                      {/* Right side: verify arrow or pulse */}
+                      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: "6px" }}>
+                        <Pulse color={col} size={5} />
+                        {c.badgeUrl && <span style={{ fontFamily: C.mono, fontSize: "0.6rem", color: C.cyan }}>↗</span>}
+                      </div>
+                    </div>
+                  </Panel>
+                );
+              })}
+            </div>
           </Reveal>
         ))}
       </div>
@@ -907,14 +909,16 @@ export default function App() {
         .proj-cols { columns: 320px; }
         .signal-panel     { display: block !important; }
         .signal-panel-mob { display: none  !important; }
+        .hero-name { font-size: clamp(3.5rem, 11vw, 9.5rem); }
         @media (max-width: 720px) {
           .desk-nav  { display: none  !important; }
-          .mob-btn   { display: block !important; }
+          .mob-btn    { display: block !important; }
           .hero-grid { grid-template-columns: 1fr !important; }
           .signal-panel     { display: none  !important; }
           .signal-panel-mob { display: block !important; }
           .about-grid { grid-template-columns: 1fr !important; }
           .proj-cols  { columns: 1 !important; }
+          .hero-name  { font-size: 14vw !important; letter-spacing: -0.04em !important; }
         }
       `}</style>
 
