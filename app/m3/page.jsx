@@ -18,7 +18,7 @@ const ME = {
   testimonial: {
     quote: "Farouq approaches security with an uncommon mix of technical depth and structured thinking. He doesn't just find the vulnerability — he maps it, documents it, and explains the blast radius. That kind of analyst is rare at any experience level.",
     author: "Supervisor, SCC–Jordan Armed Forces",
-    note: "(placeholder — update with real quote)"
+    note: "(placeholder)"
   },
   current: [
     { l:"SCC-JAF Internship", v:"Month 5 / 8" },
