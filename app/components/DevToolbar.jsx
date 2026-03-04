@@ -10,7 +10,11 @@ const pages = [
   { name: "Scroll", path: "/scroll" },
   { name: "OS", path: "/os" },
   { name: "Incident", path: "/incident" },
+  { name: "merged", path: "/merged" },
+
 ];
+
+
 
 export default function DevToolbar() {
   return (
