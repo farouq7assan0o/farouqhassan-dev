@@ -8,7 +8,7 @@ const pages = [
   { name: "Maproom", path: "/maproom" },
   { name: "Newspaper", path: "/newspaper" },
   { name: "Scroll", path: "/scroll" },
-  { name: "OS", path: "/os" },
+ // { name: "OS", path: "/os" },
   { name: "incident", path: "/incident" },
   { name: "merged", path: "/merged" },
 ];
