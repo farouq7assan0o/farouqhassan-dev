@@ -5,12 +5,14 @@ import Link from "next/link";
 const pages = [
   { name: "Home", path: "/" },
   { name: "Edit", path: "/editorial" },
-  { name: "Map", path: "/maproom" },
-  { name: "Newr", path: "/newspaper" },
+  { name: "m", path: "/maproom" },
+  { name: "New", path: "/newspaper" },
   { name: "Scroll", path: "/scroll" },
  // { name: "OS", path: "/os" },
   { name: "IR", path: "/incident" },
-  { name: "merege", path: "/merged" },
+  { name: "m1", path: "/merged" },
+  { name: "m2", path: "/m2" },
+  { name: "m3", path: "/m3" },
 ];
 
 
