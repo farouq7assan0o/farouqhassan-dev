@@ -10,7 +10,7 @@ const ME = {
   linkedin: "https://www.linkedin.com/in/FarouqHassan02",
   github: "https://github.com/farouq7assan0o",
   medium: "https://medium.com/@12farouq12",
-  htb: "https://profile.hackthebox.com/profile/019c57f0-d7e4-7294-9f0a-dd5497fea982",
+  htb: "https://app.hackthebox.com/users/farouq7assan0o",
   cvSoc: "/Farouq_Hassan_Junior_SOC_Analyst_CV.pdf",
   cvOffensive: "/Farouq_Hassan_CV_Offensive.pdf",
   tagline: "I find what's broken\nbefore the adversary does.",
@@ -18,7 +18,7 @@ const ME = {
   testimonial: {
     quote: "Farouq approaches security with an uncommon mix of technical depth and structured thinking. He doesn't just find the vulnerability — he maps it, documents it, and explains the blast radius. That kind of analyst is rare at any experience level.",
     author: "Supervisor, SCC–Jordan Armed Forces",
-    note: "(placeholder)"
+    note: "(placeholder — update with real quote)"
   },
   current: [
     { l:"SCC-JAF Internship", v:"Month 5 / 8" },
@@ -540,9 +540,11 @@ function ProjectCard({ p }) {
   const catCol=CAT_COL[p.cat]||T.textDim;
   const sevCol=SEV_COL(p.sev);
   return (
-    <div style={{ display:"block" }}>
-      <Panel style={{ borderTop:`2px solid ${sevCol}` }}>
-        <div style={{ padding:"13px 15px" }}>
+    <div style={{ display:"flex", flexDirection:"column", flex:1 }}>
+<Panel
+  style={{ borderTop:`2px solid ${sevCol}`, position:"relative" }}
+  onClick={() => setExp(false)}
+>          <div style={{ padding:"13px 15px", display:"flex", flexDirection:"column", flex:1 }}>
           <div style={{ display:"flex", justifyContent:"space-between", gap:8, marginBottom:8, flexWrap:"wrap" }}>
             <div style={{ display:"flex", gap:5, alignItems:"center", flexWrap:"wrap" }}>
               <span style={{ fontFamily:T.mono, fontSize:"0.5rem", padding:"2px 6px", background:`${sevCol}18`, color:sevCol, border:`1px solid ${sevCol}40`, letterSpacing:"0.1em" }}>SEV {p.sev}</span>
@@ -556,8 +558,20 @@ function ProjectCard({ p }) {
             {p.tags.map(t=><span key={t} style={{ fontSize:"0.5rem", padding:"2px 5px", border:`1px solid ${T.border}`, color:T.textDim, fontFamily:T.mono }}>{t}</span>)}
           </div>
           <p style={{ fontFamily:T.sans, fontSize:"0.77rem", color:T.textMid, lineHeight:1.8, marginBottom:9 }}>{p.summary}</p>
-          <div style={{ overflow:"hidden", maxHeight:exp?"400px":"0", transition:"max-height 0.35s ease" }}>
-            <div style={{ paddingTop:9, borderTop:`1px solid ${T.border}` }}>
+<div
+  style={{
+    position: "absolute",
+    left: 0,
+    right: 0,
+bottom: "45px",    background: T.panel,
+    borderTop: `1px solid ${T.border}`,
+    padding: exp ? "10px 15px" : "0 15px",
+    maxHeight: exp ? "300px" : "0",
+    overflow: "hidden",
+    transition: "all 0.3s ease",
+    zIndex: 5
+  }}
+>            <div style={{ paddingTop:9, borderTop:`1px solid ${T.border}` }}>
               {p.highlights.map((h,i)=>(
                 <div key={i} style={{ display:"flex", gap:7, fontSize:"0.66rem", color:T.textMid, fontFamily:T.mono, padding:"4px 0", borderBottom:`1px solid rgba(255,255,255,0.03)`, lineHeight:1.5 }}>
                   <span style={{ color:catCol, flexShrink:0 }}>▶</span>{h}
@@ -565,11 +579,15 @@ function ProjectCard({ p }) {
               ))}
             </div>
           </div>
-          <div style={{ display:"flex", gap:6, marginTop:9 }}>
-            <button onClick={()=>setExp(e=>!e)}
-              style={{ padding:"4px 10px", background:"none", border:`1px solid ${T.border}`, color:T.textDim, fontFamily:T.mono, fontSize:"0.58rem", cursor:"pointer", letterSpacing:"0.08em", transition:"all 0.16s" }}
-              onMouseEnter={e=>{ e.currentTarget.style.borderColor=catCol; e.currentTarget.style.color=catCol; }}
-              onMouseLeave={e=>{ e.currentTarget.style.borderColor=T.border; e.currentTarget.style.color=T.textDim; }}>
+          <div style={{ display:"flex", gap:6, marginTop:"auto", paddingTop:9 }}>
+<button
+  onClick={(e)=>{
+    e.stopPropagation();
+    setExp(x=>!x);
+  }}
+  style={{ padding:"4px 10px", background:"none", border:`1px solid ${T.border}`, color:T.textDim, fontFamily:T.mono, fontSize:"0.58rem", cursor:"pointer", letterSpacing:"0.08em", transition:"all 0.16s" }}
+  onMouseEnter={e=>{ e.currentTarget.style.borderColor=catCol; e.currentTarget.style.color=catCol; }}
+  onMouseLeave={e=>{ e.currentTarget.style.borderColor=T.border; e.currentTarget.style.color=T.textDim; }}>
               {exp?"▲ CLOSE":"▼ DETAILS"}
             </button>
             {p.github&&<a href={p.github} target="_blank" rel="noreferrer"
@@ -587,38 +605,20 @@ function ProjectCard({ p }) {
 
 // ── MASONRY PROJECT GRID ─────────────────────────────────────
 function MasonryProjects({ projects }) {
-  const [cols, setCols] = useState(3);
-  useEffect(()=>{
-    const update = () => {
-      const w = window.innerWidth;
-      setCols(w < 600 ? 1 : w < 960 ? 2 : 3);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  // Fill columns top-to-bottom (col0 gets first chunk, col1 next, etc.)
-  // so the leftmost column always has the highest-severity cards
-  const columns = Array.from({ length: cols }, () => []);
-  const perCol = Math.ceil(projects.length / cols);
-  projects.forEach((p, i) => {
-    const col = Math.min(Math.floor(i / perCol), cols - 1);
-    columns[col].push(p);
-  });
-
   return (
-    <div style={{ display:"flex", gap:8, alignItems:"flex-start" }}>
-      {columns.map((colCards, col) => (
-        <div key={col} style={{ flex:1, minWidth:0, display:"flex", flexDirection:"column", gap:8 }}>
-          {colCards.map((p, i) => (
-            <div key={p.id} style={{ marginBottom:8, display:"block" }}>
-              <Reveal delay={Math.min(i * 30, 200)} style={{ display:"block" }}>
-                <ProjectCard p={p} />
-              </Reveal>
-            </div>
-          ))}
-        </div>
+    <div
+      className="proj-grid"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+        gap: 8,
+        alignItems: "stretch"
+      }}
+    >
+      {projects.map((p, i) => (
+        <Reveal key={p.id} delay={Math.min(i * 30, 200)}>
+          <ProjectCard p={p} />
+        </Reveal>
       ))}
     </div>
   );
@@ -666,8 +666,10 @@ function ProjectsView() {
           </div>
         </Reveal>
         {/* Masonry: distribute cards into columns so expanding one card only shifts that column */}
-        <MasonryProjects projects={filtered} />
-      </div>
+<MasonryProjects
+  key={catF + "-" + sevF}
+  projects={filtered}
+/>      </div>
     </section>
   );
 }
@@ -950,7 +952,7 @@ export default function App() {
     if(document.fonts){
       document.fonts.ready.then(()=>setFontsLoaded(true));
     } else { setFontsLoaded(true); }
-    setTimeout(()=>setMinTimeDone(true), 500);
+    setTimeout(()=>setMinTimeDone(true), 1500);
   },[]);
 
   if(!fontsLoaded || !minTimeDone) return (
@@ -993,6 +995,7 @@ export default function App() {
         .signal-panel { display:block; }
         .signal-mob   { display:none; }
 
+        .proj-grid    { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; align-items: stretch; }
         @media(max-width:700px) {
           .desk-nav     { display:none !important; }
           .mob-btn      { display:block !important; }
@@ -1000,6 +1003,7 @@ export default function App() {
           .signal-panel { display:none !important; }
           .signal-mob   { display:block !important; }
           .hero-name    { font-size:12vw !important; letter-spacing:-0.04em !important; }
+          .proj-grid    { grid-template-columns: 1fr !important; }
         }
       `}</style>
 

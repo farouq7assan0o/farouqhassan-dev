@@ -4,17 +4,21 @@ import Link from "next/link";
 
 const pages = [
   { name: "Home", path: "/" },
-  { name: "Edit", path: "/editorial" },
-  { name: "m2", path: "/m3" },
-  { name: "m", path: "/maproom" },
-  { name: "Scroll", path: "/scroll" },
-  { name: "News", path: "/newspaper" },
-  { name: "IR", path: "/incident" },
+  { name: "First", path: "/dev/first" },
+  { name: "Edit", path: "/dev/editorial" },
+  { name: "m2", path: "/dev/m2" },
+  { name: "m3", path: "/dev/m3" },
+  { name: "Map", path: "/dev/maproom" },
+  { name: "Scroll", path: "/dev/scroll" },
+  { name: "News", path: "/dev/newspaper" },
+  { name: "IR", path: "/dev/incident" },
 ];
 
-
-
 export default function DevToolbar() {
+
+  // hide in production
+  if (process.env.NODE_ENV === "production") return null;
+
   return (
     <div style={toolbar}>
       {pages.map((p) => (
